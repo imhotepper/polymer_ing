@@ -88,6 +88,7 @@ define your element in a html file
 </script>
 ```
 
+---
 ## Create your own element
 use your defined element
 ```js
