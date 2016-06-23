@@ -1,3 +1,3 @@
 # polymer
 
-[start presentation](https://johngorter.github.io/polymer)
+[start presentation](https://johngorter.github.io/polymer_training)
