@@ -84,8 +84,7 @@ For example
 ---
 ## Shadow DOM
 
-Shadow dom
-> Takes all code that doesn't need to be seen during markup 
+> Take all code that doesn't need to be seen during markup 
 > placement and obscures it in Shadow DOM
 
 * Each instance is self contained 
