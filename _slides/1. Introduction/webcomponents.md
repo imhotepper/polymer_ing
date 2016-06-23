@@ -1,3 +1,6 @@
+# Web Components
+
+---
 ## Web Components
 Web Components consist of 4 main features:
 
