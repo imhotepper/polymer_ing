@@ -88,10 +88,10 @@ Shadow dom
 > Takes all code that doesn't need to be seen during markup 
 > placement and obscures it in Shadow DOM
 
-* Each instance is its own self contained world
-* Styling and scripts inside the element won't effect anything else on the page. 
-* CSS and JavaScript elsewhere on the page won't effect your web component
-    * Except for style hooks specifically created in order to allow external CSS targeting
+* Each instance is self contained 
+* Styling and scripts inside won't effect anything on the page. 
+* CSS and JavaScript elsewhere won't effect your web component
+    * Except for style hooks to allow external CSS targeting
     
 ---
 ## Templates
