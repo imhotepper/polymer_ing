@@ -12,7 +12,6 @@ Use the Polymer App Toolbox to
 * build cutting-edge Progressive Web Apps that load quickly, respond instantly and work from anywhere.
 
 ---
-
 ## What is Polymer
 Polymer is built upon Web Component technology
 Web Components:
@@ -21,7 +20,6 @@ Web Components:
 > in web documents and web applications. 
 
 ---
-
 ## Web Components
 Web Components consist of 4 main features:
 
