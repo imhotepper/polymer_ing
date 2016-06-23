@@ -15,12 +15,12 @@ Use the Polymer App Toolbox to
 ### Browser compatibility
 The Polymer library and the Polymer App Toolbox work in all major browsers
 <div style="display:flex;justify-content:center;">
-          <img src="images/chrome_128x128.png" style="padding:12px" alt="chrome logo">
-          <img src="images/firefox_128x128.png" style="padding:12px" alt="firefox logo">
-          <img src="images/internet-explorer_128x128.png" style="padding:12px" alt="internet explorer logo">
-          <img src="images/edge_128x128.png" style="padding:12px" alt="edge logo">
-          <img src="images/safari_128x128.png" style="padding:12px" alt="safari logo">
-          <img src="images/opera_128x128.png" style="padding:12px" alt="opera logo">
+          <img src="images/chrome_128x128.png" style="padding:12px" height="25" alt="chrome logo">
+          <img src="images/firefox_128x128.png" style="padding:12px" height="25" alt="firefox logo">
+          <img src="images/internet-explorer_128x128.png" style="padding:12px" height="25"  alt="internet explorer logo">
+          <img src="images/edge_128x128.png" style="padding:12px" height="25" alt="edge logo">
+          <img src="images/safari_128x128.png" style="padding:12px" height="25" alt="safari logo">
+          <img src="images/opera_128x128.png" style="padding:12px" height="25" alt="opera logo">
         </div>
 
 We need
