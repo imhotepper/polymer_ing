@@ -46,6 +46,15 @@ The HTML5 the &lt;video&gt; tag is also a web component
 But the video tag is actually
 <img src="images/videoshadowdom.png" />
 ---
+
+## Web Components
+Web components allow you to create
+```html
+<slide-show transition="fade">
+<slide src="slideone.jpg" thumb="slideone_thumb.jpg" caption="Look at this image">
+<slide src="slidetwo.jpg" thumb="slidetwo_thumb.jpg" caption="Look at this other image">
+</slide-show>
+```
 ### Browser compatibility
 The Polymer library and the Polymer App Toolbox work in all major browsers
 <div style="display:flex;justify-content:center;">
