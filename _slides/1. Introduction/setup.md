@@ -39,6 +39,7 @@ These features can be used separately or all together
 You probably already use and know web components
 
 The HTML5 the &lt;video&gt; tag is also a web component
+
 <img src="images/videoelement.png" />
 ---
 ## Web Components
