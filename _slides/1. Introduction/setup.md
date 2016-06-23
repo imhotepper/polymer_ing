@@ -55,6 +55,7 @@ Web components allow you to create
 <slide src="slidetwo.jpg" thumb="slidetwo_thumb.jpg" caption="Look at this other image">
 </slide-show>
 ```
+---
 ### Browser compatibility
 The Polymer library and the Polymer App Toolbox work in all major browsers
 <div style="display:flex;justify-content:center;">
