@@ -12,6 +12,14 @@ Use the Polymer App Toolbox to
 * build cutting-edge Progressive Web Apps that load quickly, respond instantly and work from anywhere.
 
 ---
+
+## What is Polymer
+Polymer is built upon Web Component technology
+Web Components:
+> Web Components are a set of features added by W3C to the HTML and DOM 
+> specs that allow for the creation of reusable widgets or components 
+> in web documents and web applications. 
+
 ### Browser compatibility
 The Polymer library and the Polymer App Toolbox work in all major browsers
 <div style="display:flex;justify-content:center;">
