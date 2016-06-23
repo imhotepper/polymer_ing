@@ -23,10 +23,14 @@ Web Components:
 ## Web Components
 Web Components consist of 4 main features:
 
-* Custom Elements - APIs to define new HTML elements
-* Shadow DOM - Encapsulated DOM and styling, with composition
-* HTML Imports - Declarative methods of importing HTML documents into other documents
-* HTML Templates - The template tag, which allows documents to contain inert chunks of DOM
+* Custom Elements 
+    * APIs to define new HTML elements
+* Shadow DOM 
+    * Encapsulated DOM and styling, with composition
+* HTML Imports 
+    * Declarative methods of importing HTML documents into other documents
+* HTML Templates 
+    * The template tag, which allows documents to contain inert chunks of DOM
 
 These features can be used separately or all together
 
