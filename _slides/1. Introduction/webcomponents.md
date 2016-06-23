@@ -2,6 +2,10 @@
 
 ---
 ## Web Components
+
+> Encapsulation is one of the pillars on which the Object Oriented Programming paradigm was founded and is normally used to restrict the internal representation of an object from the outside world.
+
+## Web Components
 Web Components consist of 4 main features:
 
 * Custom Elements 
