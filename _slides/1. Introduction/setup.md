@@ -29,6 +29,8 @@ Web Components consist of 4 main features:
 * HTML Templates - The template tag, which allows documents to contain inert chunks of DOM
 
 These features can be used separately or all together
+
+---
 ### Browser compatibility
 The Polymer library and the Polymer App Toolbox work in all major browsers
 <div style="display:flex;justify-content:center;">
@@ -39,7 +41,7 @@ The Polymer library and the Polymer App Toolbox work in all major browsers
           <img src="images/safari_128x128.png" style="padding:12px" height="70" alt="safari logo">
           <img src="images/opera_128x128.png" style="padding:12px" height="70" alt="opera logo">
         </div>
-
+---
 We need
 - Modularisation
 
