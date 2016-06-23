@@ -78,6 +78,30 @@ For example
     * Except for style hooks to allow external CSS targeting
     
 ---
+## Shadow Host & Shadow Root
+
+* Shadow Host
+    * DOM element hosting the Shadow DOM subtree
+* Shadow Root
+    * root of the DOM subtree containing the shadow DOM nodes
+    * creates the boundary between normal DOM nodes and Shadow DOM nodes
+* Shadow DOM
+    * allows for multiple DOM subtrees to be composed into one larger tree
+    * next slide shows concept 
+* Shadow Boundary
+    * The separation between normal DOM world and Shadow DOM world
+    * Scripts from either side cannot cross boundary
+
+---
+## Shadow Host & Shadow Root
+
+<img src="images/sd_composition1.png" />
+---
+## Shadow Host & Shadow Root
+
+<img src="images/sd_composition2.png" />
+
+---
 ## Templates
 
 ---
