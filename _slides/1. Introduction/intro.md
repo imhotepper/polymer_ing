@@ -4,6 +4,7 @@ Building modern front-end applications
 ---
 ### Agenda
 - Introduction
+- Web Components
 - Using Elements
 - Building Elements
 - Building Applications
