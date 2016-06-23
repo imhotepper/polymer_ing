@@ -12,9 +12,16 @@ Use the Polymer App Toolbox to
 * build cutting-edge Progressive Web Apps that load quickly, respond instantly and work from anywhere.
 
 ---
-### Why do we need Webpack
-Websites and applications contain
-- more and more on JavaScipt
+### Browser compatibility
+The Polymer library and the Polymer App Toolbox work in all major browsers
+<div style="display:flex;justify-content:center;">
+          <img src="./images/browsers/chrome_128x128.png" alt="chrome logo">
+          <img src="./images/browsers/firefox_128x128.png" alt="firefox logo">
+          <img src="./images/browsers/internet-explorer_128x128.png" alt="internet explorer logo">
+          <img src="./images/browsers/edge_128x128.png" alt="edge logo">
+          <img src="./images/browsers/safari_128x128.png" alt="safari logo">
+          <img src="./images/browsers/opera_128x128.png" alt="opera logo">
+        </div>
 
 We need
 - Modularisation
