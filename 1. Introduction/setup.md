@@ -73,13 +73,40 @@ What makes a web component again?
 * HTML Imports
 
 ---
+## Custom Elements
+Define the public part of your component
+
+For example
+
+```js
+<hello-world></hello-world>
+```
+---
+## Shadow DOM
+
+Shadow dom
+> Takes all code that doesn't need to be seen during markup 
+> placement and obscures it in Shadow DOM
+
+* Each instance is its own self contained world
+* Styling and scripts inside the element won't effect anything else on the page. 
+* CSS and JavaScript elsewhere on the page won't effect your web component
+    * Except for style hooks specifically created in order to allow external CSS targeting
+    
+---
+## Templates
+
+---
+## HTML Imports
+
+---
 ## Create your own element
 define your element in a html file
 
 ```html
-// helloworld.html
+// hello-world.html
 <template>
-    <p>Hello <strong></strong> :)</p>
+    <p>Hello <strong>world</strong> :)</p>
 </template>
 <script>
 (function(window, document, undefined) {
