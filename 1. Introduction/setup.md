@@ -48,7 +48,15 @@ But the video tag is actually
 ---
 
 ## Web Components
-Web components allow you to create
+Examples of web components
+* [Voice Recognition](http://zenorocha.github.io/voice-elements/)
+* [Presentation Builder](http://viniciusalmeida.github.io/ninja-presentation/#1)
+* [QR Code Generation](http://educastellano.github.io/qr-code/demo/)
+* [Gangnam style element](http://html5-demos.appspot.com/gangnam)
+
+---
+## Web Components
+You can create your own
 ```js
 <slide-show transition="fade">
 <slide src="slideone.jpg" thumb="slideone_thumb.jpg" caption="Look at this image">
@@ -56,6 +64,51 @@ Web components allow you to create
 </slide-show>
 ```
 ---
+
+## Create your own elements
+What makes a web component again?
+* Custom Elements
+* Shadow DOM
+* Templates
+* HTML Imports
+
+---
+## Create your own element
+define your element in a html file
+
+```html
+// helloworld.html
+<template>
+    <p>Hello <strong></strong> :)</p>
+</template>
+<script>
+(function(window, document, undefined) {
+    /// code
+})(window, document);
+</script>
+```
+
+## Create your own element
+use your defined element
+```js
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>&lt;hello-world&gt;</title>
+    <!-- Imports polyfill -->
+    <script src="../webcomponentsjs/webcomponents.min.js"></script>
+    <!-- Imports custom element -->
+    <link rel="import" href="hello-world.html">
+</head>
+<body>
+    <!-- Runs custom element -->
+    <hello-world></hello-world>
+</body>
+</html>
+```
+---
+
 ### Browser compatibility
 The Polymer library and the Polymer App Toolbox work in all major browsers
 <div style="display:flex;justify-content:center;">
