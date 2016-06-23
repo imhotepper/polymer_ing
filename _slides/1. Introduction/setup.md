@@ -28,12 +28,21 @@ Web Components consist of 4 main features:
 * Shadow DOM 
     * Encapsulated DOM and styling, with composition
 * HTML Imports 
-    * Declarative methods of importing HTML documents into other documents
+    * Importing HTML documents into other documents
 * HTML Templates 
-    * The template tag, which allows documents to contain inert chunks of DOM
+    * The template tag, inert chunks of DOM
 
 These features can be used separately or all together
 
+---
+## Web Components
+You probably already use and know web components
+The HTML5: the &tl;video&gt; tag is also a web component
+<img src="images/videoelement.png" />
+---
+## Web Components
+But the video tag is actually
+<img src="images/videoshadowdom.png" />
 ---
 ### Browser compatibility
 The Polymer library and the Polymer App Toolbox work in all major browsers
