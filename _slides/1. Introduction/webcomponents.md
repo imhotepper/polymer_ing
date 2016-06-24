@@ -157,6 +157,7 @@ The Polymer library and the Polymer App Toolbox work in all major browsers
         </div>
 
 ---
-
-
-```
+<!-- .slide: data-background="url('images/lab2.jpg')" --> 
+<!-- .slide: class="lab" -->
+## Lab time!
+create a web component
