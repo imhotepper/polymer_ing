@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="import" href="../../bower_components/polymer/polymer.html"/>
+        <link rel="import" href="../../bower_components/paper-badge/paper-badge.html"/>
+        <link rel="import" href="../../bower_components/paper-button/paper-button.html"/>
+        <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html"/>
+        <link rel="import" href="../../bower_components/iron-icons/iron-icons.html"/>
+        <link rel="import" href="../../bower_components/iron-icons/social-icons.html"/>
+    </head>
+    <style is="custom-style">
+        :root {
+            --paper-badge-background:green;
+        }
+    </style>
+
+    <body style="padding:30px">
+
+<div style="display:inline-block">
+  <span>Inbox</span>
+  <paper-badge label="3"></paper-badge>
+</div>
+
+<div>
+  <paper-button id="btn">Status</paper-button>
+  <paper-badge icon="favorite" for="btn" label="favorite icon"></paper-badge>
+</div>
+
+<div>
+  <paper-icon-button id="account-box" icon="account-box" alt="account-box"></paper-icon-button>
+  <paper-badge icon="social:mood" for="account-box" label="mood icon"></paper-badge>
+</div>
+    </body>
+</html>
