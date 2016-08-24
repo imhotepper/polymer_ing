@@ -20,3 +20,27 @@ Web Components:
 > in web documents and web applications. 
 
 ---
+## Polymer provides
+Polymer is a combination of
+* A toolbox of components
+* A polyfill for older browsers (webcomponents_lite.js)
+    * Not exactly part of Polymer, should vanish in time..
+* A framework that provides 
+    * Element Creation
+    * Data Binding
+    * More..
+> So Polymer works everywhere
+
+---
+## Polymer Elements
+Polymer sits on top of Web Components. 
+Elements can be anything
+* An API set
+* An entire application
+* A Visual/Non Visual building block 
+* Even data...
+
+---
+## Polymer Elements
+
+
