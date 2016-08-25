@@ -35,28 +35,57 @@ are bundled into a catalog.
 
 --- 
 
-### Iron Icons
-By including 
+### How to use the elements
+By including the html 
 ```
-<link rel="import" href="/iron-icons/iron-icons.html" />
+<link rel="import" href="/element-set/element-set.html" />
 ```
-into your page, you can use icons from the iron-icon set like
+into your page, you can use the elements like
 
 ```
-<iron-icon icon="menu" />
+<page-toolbar></page-toolbar>
 ```
 
 --- 
 
-### Iron Icons (2)
-There are more iconsets
+### Bind the elements together
+Elements have properties, methods and fire events
+You can connect elements by using data binding and event handling
+
+Here is an example of two connected elements
 ```
-<link rel="import" href="/iron-icon/social-icons.html" />
+<iron-ajax auto url='/data/data.json' handle-as='json' last-response='{{response}}' />
+<iron-list items="[[response]]">...</iron-list>
 ```
-The link above enables icons from the social iconsets
+
+### Listen to element events
+Elements fire events wich you can use to act upon
+
+Below is an example of an event
 ```
-<iron-icon icon="social:mood" />
+<iron-ajax auto url='...' handle-as='json' on-response='handleResponse' />
+<paper-button on-tap='handleClick' />
 ```
-You can create, name and include your own iconsets!
+
+The eventhandlers are functions you have to provide, just like regular DOM
+
+### Using inline modules
+Polymer provides <code>dom-module</code> to provide for document level 
+elements. 
+It is usefull to wrap the elements in a dom-module for
+* databinding support
+* theming support
+* scoping
+
+### Using inline modules
+To declare an inline dom-module, you write
+```
+<dom-module id='my-app' [is='dom-bind|dom-if|dom-repeat']>
+<style>... your styles here ...</style>
+<template>... your markup here ...</template>
+<script>... your script here ...</script>
+</dom-module>
+```
+
 
 
