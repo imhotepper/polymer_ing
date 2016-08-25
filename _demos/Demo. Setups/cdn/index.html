@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- include polymer from the cdn -->
+  <link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/polymer/polymer.html"/>
+</head>
+<body>
+    <dom-module is="dom-bind" id="my-app">
+        <template>
+           message: <div>{{message}}</div>
+        </template>
+        <script>   
+        console.log('here');      
+            Polymer({
+                is:'my-app',
+                properties: {
+                    message: {
+                        type:String, 
+                        value:'test'
+                    }
+                }
+            })
+        </script>
+    </dom-module>
+    <my-app></my-app>
+    <script>
+        var tries = 0;
+        window.setInterval(() => 
+            document.querySelector("my-app").message = `testing ${tries++}`
+            , 1000);
+    </script>
+</body>
+</html>

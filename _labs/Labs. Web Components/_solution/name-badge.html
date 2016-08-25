@@ -1,0 +1,35 @@
+    <template id="mytemplate">
+         <style>
+              div { font-family:arial;color:gray;}
+              .badge { width:200px;text-align:center; }
+              .name { padding:10px;border-radius:5px 5px 0px 0px; border-style:solid;border-color:black;border-width:2px 2px 0px 2px;background-color:red;color:white;font-weight:bold;}
+              .details { padding:10px;font-style:italic;border-radius:0px 0px 5px 5px; border-style:solid;border-color:black;border-width:1px 2px 2px 2px;background-color:white;}
+            </style>
+            <div class="badge">
+            <div class="name"><span id="name"></span></div>
+            <div class="details"><content select="[details]">Trainer Info Support bv</content></div>
+            </div>
+    </template>
+    <script>  
+    // Add the template to the document structure -->
+    document.body.appendChild(document.querySelector('link[rel="import"]').import.querySelector("#mytemplate"));
+    // Define the custom element
+    customElements.define('name-badge', class extends HTMLElement {
+       connectedCallback() {
+            var temp = document.querySelector("#mytemplate").content;
+            var root = this.createShadowRoot();
+            root.appendChild(document.importNode(temp, true));
+            root.querySelector("#name").innerText = this.contactname;
+       }
+       get contactname() {
+          if (this.hasAttribute('contactname')){
+            return this.getAttribute('contactname');
+          }
+          return "John Gorter";
+       }
+       set contactname(val) {
+         this.setAttribute('contactname', val);
+         this.querySelector("#name").innerText = val;
+       }
+    });
+    </script>

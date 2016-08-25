@@ -1,0 +1,19 @@
+<!DOCTYPE hmtl>
+<html>
+    <head>
+    <link id="dialogs" rel="import" href="./snippets/warnings.html" onload="console.log('loaded!');">
+    </head>
+
+    <body>
+  
+    <script>
+        var link = document.querySelector('#dialogs');
+        var content = link.import;
+
+        // Grab DOM from warning.html's document.
+        var el = content.querySelector('.warning');
+
+        document.body.appendChild(el.cloneNode(true));
+  </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <style>
+      /* :root { --main-color:coral; } */
+    </style>
+    <body>
+        <h1>Shadow DOM DEMO</h1>
+        <p>In the example below, there is a paragraph tag that gets a shadow dom with content.
+            Note how the style defined in the shadow dom does not affect the main page. The shadow
+            dom provides encapsulation</p>
+        <p id="shadowtest"></p>
+        <script>
+            var root = document.querySelector("#shadowtest").createShadowRoot(); 
+            root.innerHTML = '<style>h1 { color:red;}</style><h1>Custom header</h1><strong>hello world</strong>';
+        </script>
+
+
+        <p>In the example below, there is another paragraph tag that gets a shadow dom with content.
+            Now we make use of CSS3 variables to give the outside world the option to style our header.</p>
+        <p id="shadowtest2"></p>
+        <script>
+            var root = document.querySelector("#shadowtest2").createShadowRoot(); 
+            root.innerHTML = `
+                <style>
+                    h1 { color:var(--main-color, pink);}
+                </style>
+                <h1>Custom header</h1>
+                <strong>hello themable world</strong>
+                `;
+        </script>
+
+    </body>
+</html>

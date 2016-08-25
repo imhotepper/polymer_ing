@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="import" href="./bower_components/polymer/polymer.html"/>
+    </head>
+    <style>
+        #clicker { margin:10px;border:2px solid black;display:flex;width:100px;}
+    </style>
+    <body>
+        <dom-module is="dom-bind" id="my-app">
+            
+            <template>
+                Hello {{ thing }}
+            </template>
+            
+            <script>
+              Polymer({
+                  is:'my-app',
+                  properties:{
+                      thing: { 
+                          type:String, 
+                          value:'world'
+                      }
+                  }
+              });
+            </script>
+
+        </dom-module>
+        <my-app></my-app>
+        <div id="clicker">Click me to change the world!!</div>
+        <script>
+            document.querySelector('#clicker').addEventListener('click',()=>{
+                document.querySelector('my-app').thing = 'universe';
+            });
+        </script>
+    </body>
+</html>

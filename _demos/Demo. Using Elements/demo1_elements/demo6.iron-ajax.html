@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/paper-elements/paper-elements.html" />             
+         <link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/iron-elements/iron-elements.html" />
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.js"></script>
+    </head>
+    <body>
+        <dom-module id="my-app" is="dom-bind">
+             <template>
+                 <iron-ajax id="datasource" on-response="onresponse" auto url="/data/classes.json" handle-as="json"  last-response="{{response}}"></iron-ajax>
+                 <iron-list items="{{response}}" as="item">
+                    <template><div> Name: [[item.name]]</div></template>
+                </iron-list>
+            </template>
+            <script>
+                Polymer({
+                    is:'my-app',
+                    onresponse:function(){
+                        document.querySelector('iron-list').fire('iron-resize');
+                    }
+                });
+            </script>
+        </dom-module>
+        <my-app></my-app>
+    </body>
+</html>

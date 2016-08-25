@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/paper-elements/paper-elements.html" />             
+         <link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/iron-elements/iron-elements.html" />
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.js"></script>
+    </head>
+    <body>
+        <style>
+          div:nth-child(odd) { background-color:silver;}
+        </style>
+
+        <dom-module id="my-app" is="dom-bind">
+                    <style>
+            iron-list {
+ --iron-list-items-container: {
+    margin: 0px;
+  };
+}
+        </style>
+
+           items: <template>
+                <iron-list grid  items="{{items}}" as="item">
+                    <template><div style="width:200px;height:200px;padding:20px;border:1px solid black"><paper-checkbox style="">{{item.name}}</paper-checkbox></div></template>
+                </iron-list> 
+            </template>
+            <script>
+                Polymer({
+                    is:'my-app',
+                    properties: {
+                        items: {
+                           value:[]
+                        }
+                    },
+                    ready:function(){
+                        window.setInterval(()=>{this.push('items',{
+                            name:faker.name.findName()
+                        })},1000);
+                    }
+                })
+            </script>
+        </dom-module>
+
+        <my-app></my-app>
+    </body>
+</html>

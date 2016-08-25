@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <h1>Templates</h1>
+        <p>
+            This page shows how to use templates to create a 
+            DOM structure that does not get processed by the browser.
+            This technique is excellent for creating eh... templates.
+
+            Note how styles inside the template affect the global document
+            on instantiation, there is no Shadow Dom in play here..
+        </p>
+        <button onclick="loadTemplate();">Load the template</button>
+        <div id="placeholder"></div>
+        <script>
+            function loadTemplate(){
+                var temp = document.querySelector("#myTemplate").content;
+                document.querySelector("#placeholder").appendChild(document.importNode(temp, true));
+            }
+        </script>
+        
+        <template id="myTemplate">
+            <!--
+                <style>
+                h1 { color:red}
+            </style>
+            -->
+            <h1>Inside the template</h1>
+            <img src="./img/webcomponents.svg" />
+            <script>
+                console.log("this script fires when template is instantiated");
+            </script>
+        </template>
+    </body>
+</html>

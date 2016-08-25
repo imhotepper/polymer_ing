@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/polymer/polymer.html" />
+        <link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/paper-elements/paper-elements.html" />
+        <link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/paper-icon-button/paper-icon-button.html" />
+        <link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/iron-icons/iron-icons.html" />
+        <link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/paper-progress/paper-progress.html" />
+    </head>
+    <body class="fullbleed flex">
+        <style is="custom-style">
+            .red { --paper-toolbar-background: red;}
+        </style>
+        <dom-module is="dom-bind" id="my-app">
+            <template>
+                <style>
+                paper-progress {
+                    --paper-progress-transition-duration: 1.0s;
+                    --paper-progress-transition-timing-function: ease;
+                    --paper-progress-transition-transition-delay: 0s;
+                }
+                </style>
+               <paper-toolbar class="tall">
+                   <paper-icon-button icon="menu"></paper-icon-button>
+                   <div class="flex">Toolbar Demo</div>
+                   <paper-icon-button icon="more-vert"></paper-icon-button>
+                   <paper-progress value="{{value}}" secondary-progress="[[secondvalue]]" class="bottom fit"></paper-progress>
+                </paper-toolbar>
+            </template>
+            <script>
+                Polymer({
+                    is:'my-app'
+                });
+            </script>
+        </dom-module>
+      
+         <my-app></my-app>
+
+         <script>
+             document.querySelector('my-app').secondvalue = 0 ;
+             document.querySelector('my-app').value = 0;
+             window.setInterval(()=>{document.querySelector('my-app').value++}, 1000);
+             window.setInterval(()=>{document.querySelector('my-app').secondvalue++}, 50);
+         </script>
+    </body>
+</html>

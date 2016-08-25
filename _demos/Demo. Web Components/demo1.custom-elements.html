@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- we need the polyfill if the browser does not support it -->
+        <script src="./CustomElements.js"></script>
+    </head>
+    <body>
+        <h1>Custom Elements Demo</h1>
+        <p>This page shows the creation of a new custom element.<p>
+        <script>
+           customElements.define('john-element', class extends HTMLElement {
+                get open() { return this.hasAttribute('open'); }
+                set open(val) {
+                    if (val) {
+                        this.setAttribute('open', '');
+                    } else {
+                        this.removeAttribute('open');
+                    }
+                }
+                constructor() {
+                    // /<style>h1 { color:red}</style>
+                    super();
+                    this.innerHTML = '<h1>content</h1>content goes here...';
+                    this.addEventListener('click', e => {
+                      console.log('clicked me!');
+                      this.open = !this.open;
+                    });
+                }
+           })
+        </script>
+        <john-element></john-element>        
+    </body>
+</html>

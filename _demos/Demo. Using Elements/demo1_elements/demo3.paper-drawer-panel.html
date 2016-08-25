@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+         <link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/paper-elements/paper-elements.html" />
+         <link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/iron-elements/iron-elements.html" />
+     </head>
+     <body class="fullbleed flex">
+         <dom-module id="my-app" >
+             <template>
+                <paper-drawer-panel on-iron-select="drawer">
+                    <div drawer id="drawer">
+                        <paper-toolbar > 
+                            <paper-icon-button icon="arrow-back" paper-drawer-toggle></paper-icon-button>
+                            <div></div>
+                        </paper-toolbar>
+                    </div>
+                    <div main>
+                        <paper-toolbar> 
+                            <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
+                            <div>Toolbar</div>
+                                </paper-toolbar>
+                        <div><paper-icon-button  icon="menu"></paper-icon-button></div>
+                
+                    </div>
+                </paper-drawer-panel>
+            </template>
+            <script>
+                Polymer({
+                    is: 'my-app',
+                    drawer: function(event) {
+                        if (event.detail.item.id == this.$.drawer.id) console.log('drawer shown!');
+                    }
+                });        
+            </script>    
+        </dom-module>
+        <my-app></my-app>
+    </body>
+</html>
