@@ -96,7 +96,7 @@ you can use Polymer-CLI.
 
 To install Polymer-cli, type
 ```
-npm install yo polymer-cli -g 
+npm install polymer-cli -g 
 ```
 To create a polymer application type
 ```

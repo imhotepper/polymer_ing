@@ -44,6 +44,12 @@ Polymer({ is: 'x-custom',
 ```
 
 ---
+<!-- .slide: data-background="url('images/demo.jpg')" --> 
+<!-- .slide: class="lab" -->
+## Demo time!
+Demo. Simple observers 
+
+---
 ### Complex observers
 * declared in the observers array
 ```
@@ -186,6 +192,13 @@ Polymer({ is: 'x-custom',
   ready: function() { this.push('users', {name: "Jack Aubrey"}); },
 });
 ```
+
+---
+<!-- .slide: data-background="url('images/demo.jpg')" --> 
+<!-- .slide: class="lab" -->
+## Demo time!
+Demo. Array observers 
+
 ---
 ### Observe all path changes 
 use the wildcard path (*)
