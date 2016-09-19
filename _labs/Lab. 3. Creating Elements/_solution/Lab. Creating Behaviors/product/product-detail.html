@@ -4,6 +4,7 @@
   <template>
     <style>
           :host { display:inline block;}
+          :host.highlighted { color:red;}
     </style>
     <h1>{{ title}}</h1>
     <hr/>
@@ -50,7 +51,8 @@
       },
       addStock: function(value){
         this.stock += value;
-      }
+      },
+      behaviors:[mybehaviors.highlight]
   });
   </script>
 </dom-module>

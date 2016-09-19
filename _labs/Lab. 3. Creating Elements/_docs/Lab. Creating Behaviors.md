@@ -1,64 +1,17 @@
 ## Lab 1. Creating a custom element
-In this lab you will create a custom element that holds product information
-> duration: 45 minutes
+In this lab you will create a custom behavior that highlights 'stuff'
+> duration: 20 minutes
 
 ### Step 1. Setting the stage
-Create a directory 'polymer_labs\elements' and navigate into it.
+Create a directory 'polymer_labs\behaviors' and navigate into it.
 Install NodeJS from it's website and use npm to install lite-server globally
 ```
 $ sudo npm install lite-server -g
 ```
-Create the following file and directory structure:
-- product\product-details.html
-- index.html
+Copy the solution items from the previous lab `lab. Creating Elements', found in the 
+_solution folder from that location into the `polymer_labs\behaviors` folder.
 
-Give the index html an appropriate content. Make sure to refer to the
-Polymer html include inside the head section of your HTML page.
-
-Include the 'products\product-details.html' into the head of your index.html
-
-Define an element that displays a product title, price, stock and details. Define these
-as properties on your element. 
-
-An example of the element is given below. 
-
-```
-<dom-module is="product-detail">
-  <template>
-    <style>
-          :host { display:inline block;}
-    </style>
-    <h1>{{ title}}</h1>
-    <hr/>
-    <p> {{ details }}</p>
-    <div class="buttons">
-        Current stock: {{ stock }} <br/>
-    </div>
-  </template>
-  <script>
-  Polymer({
-      is:'product-detail',
-      properties:{
-          stock:{
-              type:Number, 
-              value:10,
-              notify:true,
-          },
-          details: {
-              type:String, 
-              value:'An IPad is a revolutionary thing',
-          },
-          title: {
-              type:String, 
-              value:'IPad 7',
-              notify:true,
-          },
-      }
-  });
-  </script>
-</dom-module>
-```
-Use the element as an element on the index.html
+Add the 
 
 Save all files.
 Run the setup using the following command from the root of your labfolder:
@@ -72,13 +25,13 @@ Make sure you see the component alive in the browser
 Open the file 'product/product-details.html' and add the following button 
 to the template 
 ```
- <button  disabled$="{{isOutOfStock}}">Buy this product</button>
+ <button  disabled$="{{isInStock}}">Buy this product</button>
 ```
 
 This button lets the user buy the product, but only if it is in stock.
 
-Add a computed property named `isOutOfStock` that is of type Boolean. 
-The property should return false when the stock has a value larger than 0.
+Add a computed property named `isInStock` that is of type Boolean. 
+The property should return true when the stock has a value larger than 0.
 
 The computed function is already hooked to the button. 
 
@@ -96,7 +49,7 @@ $0.stock = 10
 ```
 Is the button enabled again?
 
-### Step 3. Add Methods to the product-details component
+### Step 2. Add Methods to the product-details component
 Open the file 'product/product-details.html' and add two methods to 
 the component:
 - add a method to buy the product. This method should 
@@ -121,7 +74,7 @@ addStock: function(value){
 Test the component in the browser. Buy Ipads and check if the button is disabled 
 when the stock runs out.
 
-### Step 4. Add events to the product-details component
+### Step 3. Add events to the product-details component
 Open the file 'product/product-details.html' and add two events to the product-detail
 component:
 - Add an event that gets fired upon buy of the item.

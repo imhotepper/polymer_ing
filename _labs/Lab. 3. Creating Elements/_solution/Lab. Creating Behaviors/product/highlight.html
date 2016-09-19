@@ -1,0 +1,24 @@
+<link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/polymer/polymer.html"/>
+
+<script>
+(function(){
+window.mybehaviors = window.mybehaviors || {};
+window.mybehaviors.highlight = {
+    properties:{
+          highlight:{
+              type:Boolean,
+              reflectToAttribute:true
+          }
+    },
+    listeners: {
+        click: '_toggleHighlight'
+      },
+    /* methods */
+    _toggleHighlight: function() { 
+        this.highlight = !this.highlight;
+        this.toggleClass('highlighted', this.highlight);
+    }
+    };
+})();
+</script>
+
