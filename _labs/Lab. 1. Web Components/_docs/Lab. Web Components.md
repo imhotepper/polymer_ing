@@ -57,7 +57,7 @@ The badge is kind of uncustomizable. Let's change that... Open the 'index.html' 
 editor and change the declaration into:
 
 ```
-<name-badge name="Another User"></name-badge>
+<name-badge contactname="Another User"></name-badge>
 ```
 
 Try to write the code to reflect this attribute into the content. 
@@ -311,7 +311,7 @@ We made use of 4 features from the HTML5 spec to create web components. We've us
 Custom Elements, Templates, Shadow DOM and HTMLImports. Each of these features have a 
 purpose of their own but combined they create an opportunity to write web components. 
 
-However, to creat reusable web components, we have written a lot of boilerplate code.
+However, to create reusable web components, we have written a lot of boilerplate code.
 This is where Polymer and other libraries help. Let's dive into Polymer..
 
 -= End of lab =-
