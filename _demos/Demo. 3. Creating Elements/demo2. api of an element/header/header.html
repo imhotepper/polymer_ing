@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<!-- include polymer from the cdn -->
+<link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/polymer/polymer.html"/>
+
+<dom-module is="dom-bind" id="my-header">
+        
+        <template>
+           <button on-tap="handleTap">{{title}}</button>
+        </template>
+        <script>     
+            Polymer({
+                is:'my-header',
+                /* example of a property */
+                properties:{
+                    title:{
+                        type:String, 
+                        value:'press me',
+                        notify:true
+                    }
+                },
+                /* example of an event */
+                handleTap:function(){
+                    console.log('tapped me');
+                    this.fire('kick', {name:'john'});
+                },
+                /* example of a method */
+                setTitle:function(title){
+                    this.title = title;
+                }
+            });
+        </script>
+</dom-module>
+</html>

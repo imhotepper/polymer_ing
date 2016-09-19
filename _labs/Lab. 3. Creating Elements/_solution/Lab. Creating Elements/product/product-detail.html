@@ -1,0 +1,56 @@
+<link rel="import" href=""/>
+
+<dom-module is="product-detail">
+  <template>
+    <style>
+          :host { display:inline block;}
+    </style>
+    <h1>{{ title}}</h1>
+    <hr/>
+    <p> {{ details }}</p>
+    <div class="buttons">
+        Current stock: {{ stock }} <br/>
+        <button on-tap="buy" disabled$="{{isInStock}}">Buy this product</button>
+    </div>
+  </template>
+  <script>
+  Polymer({
+      is:'product-detail',
+      properties:{
+          stock:{
+              type:Number, 
+              value:10,
+              notify:true,
+              reflectToAttribute:true,
+              observer:'_stockChanged'
+          },
+          details: {
+              type:String, 
+              value:'An IPad is a revolutionary thing',
+          },
+          title: {
+              type:String, 
+              value:'IPad 7',
+              notify:true,
+          },
+          isInStock: {
+              type:Boolean,
+              computed:'_hasStock(stock)'
+          }
+      },
+      _stockChanged:function(){
+          if (this.stock < 1) this.fire('outofstock');
+      },
+      _hasStock: function() { 
+          return this.stock<1; 
+      },
+      buy: function(){
+        this.stock--;
+        this.fire("bought");
+      },
+      addStock: function(value){
+        this.stock += value;
+      }
+  });
+  </script>
+</dom-module>

@@ -1,0 +1,25 @@
+
+<link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/polymer/polymer.html"/>
+
+<script>
+    /* notice that we do not call polymer but just define an object */
+(function(){
+    window.mybehaviors = window.mybehaviors || {}; 
+
+    window.mybehaviors.logbehavior = {
+        properties:{
+            category:{
+                type:String,
+                value:"LOG"
+            }
+        },
+        listeners:{
+            click:'_logLine'
+        },
+        _logLine:function(){
+            console.log("someone clicked on the button....");
+        }
+    };
+})();
+
+</script>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<!-- include polymer from the cdn -->
+<link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/polymer/polymer.html"/>
+
+<dom-module is="dom-bind" id="my-header">
+        <style>
+            :host { color:navy; }
+        </style>
+        <template>
+           <h1>{{ title }}</h1>
+        </template>
+        <script>  
+          var i = 0;       
+            Polymer({
+                is:'my-header',
+                properties: {
+                   title:{ 
+                       type:String,
+                       value:"Info Support",
+                       notify:true
+                    }
+                },
+                created:function(e){
+                    console.log('created');
+                    var self = this;
+                    window.setInterval(()=>{
+                        self.title = 'test ' + i++;
+                    }, 1000);
+                }
+            });
+        </script>
+</dom-module>
+</html>
