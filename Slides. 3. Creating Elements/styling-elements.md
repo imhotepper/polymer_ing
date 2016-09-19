@@ -1,13 +1,12 @@
 # Styling elements
 
 ---
-
 ### Styling elements
 
 Elements can contain styles
 * in a style tag inside the template
-
-Styles just affect the local DOM.
+* styles just affect the local DOM
+* light DOM can overrule local DOM
 
 ---
 ### Example styling
@@ -35,7 +34,6 @@ Styles just affect the local DOM.
 * Style are isolated
 * What about intentionally customizing the style of a custom element's 
 local DOM?
-
 * use custom css properties (HTML 5 standard)
 
 ---
@@ -67,7 +65,6 @@ Example:
   </script>
 </dom-module>
 ```
-
 ---
 ### Example usage of theming
 ```
@@ -91,11 +88,16 @@ Example usage of my-toolbar:
 ```
 
 ---
+<!-- .slide: data-background="url('images/demo.jpg')" --> 
+<!-- .slide: class="lab" -->
+## Demo time!
+Demo. Themable Element
+
+---
 ### Custom CSS mixins
 
 It may be tedious (or impossible) for an element author to predict 
-every CSS property that may be important for theming, 
-let alone expose every property individually.
+every CSS property that may be important for theming.
 
 Use @apply to apply a mixin:
 ```
@@ -113,7 +115,7 @@ selector {
 ---
 ### Custom CSS mixin example
 ```
-    <dom-module id="my-toolbar">
+<dom-module id="my-toolbar">
     <template>
     <style>
       :host {
@@ -163,7 +165,6 @@ Example usage of my-toolbar:
   <script>
     Polymer({ is: 'my-element'});
   </script>
-
 </dom-module>
 ```
 ---
@@ -171,140 +172,130 @@ Example usage of my-toolbar:
 
 In order to have an element re-evaluate custom property values due 
 to dynamic changes such as application of CSS classes, etc., 
-* call the updateStyles method on the element.
+* updateStyles on element
+* Polymer.updateStyles for all elements
 
-<dom-module id="icon-toggle">
-  <template>
-    <style>
-      /* local styles go here */
-      :host {
-        display: inline-
-        block;
-      }
-    </style>
-    <!-- local DOM goes here -->
-    <span>Not much here yet.</span>
-  </template>
-```
-
-### Declarative part(2)
-* The 'dom-module' tag wraps the local DOM definition. 
-The id attribute shows that this module is called icon-toggle.
-* The 'template' defines the local DOM structure and styling. 
-This is where you'll add markup for your custom element.
-* The 'style' element define styles scoped to the local DOM.
-They don't affect the rest of the document.
-* The :host pseudo-class matches the element defined.
-This is the element that contains or hosts the local DOM tree.
-
-What is the local DOM?
 ---
-
-### Local DOM
-
-* Local DOM
-    - DOM thats independent from the 'normal' DOM
-    - Implemented as Shadow DOM
-    - Implemented as Shady DOM (custom implementation)
-* Light DOM
-    - the 'normal' DOM
-
-Polymer will automatically clone the template's contents 
-into the element's local DOM.
-
-Currently Polymer uses shady DOM by default on all browsers.
-
-### Automatic Node Finding
-
-Nodes specified in template with an id is stored on the this.$ hash by id.
+### Example imperative styling
 ```
+<dom-module id="x-custom">
 <template>
-    Hello <span id="name"></span>!
+    <style>
+        :host { --my-toolbar-color: red; }
+    </style>
+    <my-toolbar>My awesome app</my-toolbar>
+    <button on-tap="changeTheme">Change theme</button>
 </template>
 <script>
-    Polymer({
-      is: 'x-custom',
-      ready: function() {
-        this.$.name.textContent = this.tagName;
-    }});
+Polymer({ is: 'x-custom',
+    changeTheme: function() {
+        this.customStyle['--my-toolbar-color'] = 'blue';
+        this.updateStyles();
+    }
+});
 </script>
-```
-
-Statically created instance nodes only!
----
-
-### Automatic Node Finding(2)
-* For locating dynamically-created nodes, use the $$ method
-    - this.$$(selector)
-        - returns first node in local DOM that matches selector
-* $$ is alias for Polymer.dom(this.root).querySelector():
----
-
-### DOM distribution
-Composition of element's light DOM with its local DOM
-* Content Element
-    - provides insertion point
-    - supports select attribute
-
-```
-<template>
-  <header>Local dom header followed by distributed dom.</header>
-  <content select=".content"></content>
-  <footer>Footer after distributed dom.</footer>
-</template>
-```
-
-
-By including the html 
-```
-<link rel="import" href="/element-set/element-set.html" />
-```
-into your page, you can use the elements like
-
-```
-<page-toolbar></page-toolbar>
-```
-
----
-
-### Bind the elements together
-Elements have properties, methods and fire events
-You can connect elements by using data binding and event handling
-
-Here is an example of two connected elements
-```
-<iron-ajax auto url='/data/data.json' handle-as='json' last-response='{{response}}' />
-<iron-list items="[[response]]">...</iron-list>
-```
-
-### Listen to element events
-Elements fire events wich you can use to act upon
-
-Below is an example of an event
-```
-<iron-ajax auto url='...' handle-as='json' on-response='handleResponse' />
-<paper-button on-tap='handleClick' />
-```
-
-The eventhandlers are functions you have to provide, just like regular DOM
-
-### Using inline modules
-Polymer provides <code>dom-module</code> to provide for document level 
-elements. 
-It is usefull to wrap the elements in a dom-module for
-* databinding support
-* theming support
-* scoping
-
-### Using inline modules
-To declare an inline dom-module, you write
-```
-<dom-module id='my-app' [is='dom-bind|dom-if|dom-repeat']>
-<style>... your styles here ...</style>
-<template>... your markup here ...</template>
-<script>... your script here ...</script>
 </dom-module>
 ```
 
+---
+### Custom element for document styling (custom-style)
+Polymer provides a `style is="custom-style"` custom element 
+* Do not leak into local DOM when running on browsers 
+without native Shadow DOM.
+* Custom properties may be defined in an custom-style. Use 
+the :root selector to define custom properties that apply to 
+all custom elements.
+* For backwards compatibility, 
+the deprecated /deep/ combinator and ::shadow pseudo-element are shimmed
+on browsers without native Shadow DOM. 
 
+---
+### Example custom-style
+```
+<!doctype html>
+<html><head>
+  <script src="components/webcomponentsjs/webcomponents-lite.js"></script>
+  <link rel="import" href="components/polymer/polymer.html">
+  <style is="custom-style">
+    /* Will be prevented from affecting local DOM of Polymer elements */
+    * { box-sizing: border-box; }
+    /* Use the :root selector to define custom properties and mixins */
+    /* at the document level  */
+    :root { --my-toolbar-title-color: green; }
+  </style>
+</head><body>...</body>
+</html>
+```
+
+---
+<!-- .slide: data-background="url('images/demo.jpg')" --> 
+<!-- .slide: class="lab" -->
+## Demo time!
+Demo. Using the custom-style type extension
+
+---
+### Shared styles
+* package a set of style declarations inside `dom-module`
+* style module declares a named set of style rules that can 
+be imported into an element definition
+* or into a custom-style element
+
+---
+### Example shared style module
+Define a shared style module
+```
+<!-- shared-styles.html -->
+<dom-module id="shared-styles">
+  <template>
+    <style>
+      .red { color: red; }
+    </style>
+  </template>
+</dom-module>
+```
+
+---
+### Example shared style module
+Use the shared style module
+```
+<!-- import the module  -->
+<link rel="import" href="../shared-styles/shared-styles.html">
+<dom-module id="x-foo">
+  <template>
+    <!-- include the style module by name -->
+    <style include="shared-styles"></style>
+    <style>:host { display: block; }</style>
+    Hi
+  </template>
+  <script>Polymer({is: 'x-foo'});</script>
+</dom-module>
+```
+
+---
+### Example shared style module
+Use the shared style module
+```
+<!-- import the shared styles and include the shared styles  -->
+<link rel="import" href="../shared-styles/shared-styles.html">
+<style is="custom-style" include="shared-styles"></style>
+```
+A single style tag can both include shared styles and 
+define local rules
+```
+<style include="shared-styles">
+  :host { display: block; }
+</style>
+```
+
+---
+<!-- .slide: data-background="url('images/demo.jpg')" --> 
+<!-- .slide: class="lab" -->
+## Demo time!
+Demo 4. Using shared style modules 
+
+---
+<!-- .slide: data-background="url('images/lab2.jpg')" --> 
+<!-- .slide: class="lab" -->
+## Lab time!
+Writing Styling Elements
 
