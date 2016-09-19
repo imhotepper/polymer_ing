@@ -1,10 +1,11 @@
-<link rel="import" href=""/>
+<link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/polymer/polymer.html"/>
+<link rel="import" href="../product/highlight.html"/>
 
 <dom-module is="product-detail">
   <template>
     <style>
-          :host { display:inline block;}
-          :host.highlighted { color:red;}
+          :host { display:block;margin:10px;padding:50px;}
+          :host.highlighted { background-color:red;}
     </style>
     <h1>{{ title}}</h1>
     <hr/>

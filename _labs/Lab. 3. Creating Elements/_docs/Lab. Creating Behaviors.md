@@ -11,124 +11,68 @@ $ sudo npm install lite-server -g
 Copy the solution items from the previous lab `lab. Creating Elements', found in the 
 _solution folder from that location into the `polymer_labs\behaviors` folder.
 
-Add the 
+Add the following file into the `product` subfolder.
+- highlight.html
+
+Open the file `.\product\product-detail.html` and include references to polymer and our 
+behavior.
 
 Save all files.
+
+Open the file `.\product\highlight.html` and implement a behavior with the following
+requirements:
+- the behavior should contain a boolean property `highlight` that is reflected 
+onto an attribute. 
+- the behavior should listen for `click` events and handle them by assigning a value
+to the property `highlight`.
+- the behavior should add a class to the target element named `highlighted`
+
+Save all the files.
+
 Run the setup using the following command from the root of your labfolder:
 ```
 lite-server
 ```
 
-Make sure you see the component alive in the browser
+Make sure there are no errors displayed.
 
-### Step 2. Add a computed property
-Open the file 'product/product-details.html' and add the following button 
-to the template 
+Select the component in the element view and check if clicking the product-details toggles the 
+highligh attribute. Also check if the class is applied accordingly.
+
+
+### Step 2. Add styles to the product-details
+Open the file 'product/product-details.html' and add styles to this element. 
+Give the product-details a red background when the .highlighted class is set.
+
+Save all the files.
+
+Run the setup using the following command from the root of your labfolder:
 ```
- <button  disabled$="{{isInStock}}">Buy this product</button>
-```
-
-This button lets the user buy the product, but only if it is in stock.
-
-Add a computed property named `isInStock` that is of type Boolean. 
-The property should return true when the stock has a value larger than 0.
-
-The computed function is already hooked to the button. 
-
-Save the files.
-
-Test the result by locating and selecting the element in the browser and 
-typing the following in the console screen of Chrome:
-```
-$0.stock = 0
-```
-Is the button disabled?
-type the following in the console screen again:
-```
-$0.stock = 10
-```
-Is the button enabled again?
-
-### Step 2. Add Methods to the product-details component
-Open the file 'product/product-details.html' and add two methods to 
-the component:
-- add a method to buy the product. This method should 
-decrement the stock value. 
-- add a method to increase the stock. This method should 
-increment the stock with a given value. 
-
-Add code to the buy button in the template that let's the user buy 
-the product. When the user taps the button, the product's stock 
-should be decremented by one. 
-
-The methods should look something like this:
-```
-buy: function(){
-    this.stock--;
-}
-addStock: function(value){
-    this.stock += value;
-}
+lite-server
 ```
 
-Test the component in the browser. Buy Ipads and check if the button is disabled 
-when the stock runs out.
+> Note how the background is ugly and non-containing. 
 
-### Step 3. Add events to the product-details component
-Open the file 'product/product-details.html' and add two events to the product-detail
-component:
-- Add an event that gets fired upon buy of the item.
-Name this event `bought`.
-This event can be fired when the user pressed the buy button.
+Fix the styles by adding styles ontothe host element.
 
-- Add an event that gets fired when the stock runs out.
-Name this event `outofstock`.
-This event can be fired upon stock changes. Register an observer in 
-the property that takes care of checking and perhaps firing the event.
+Save all files and run/test again.
 
-Open the file 'index.html' and write code that declares handlers for 
-these events and writes their occurence to the console.log.
 
-Note that you have to rewrite the index.html so it uses an automatic dom-module
-which wrappes the product-detail module.
+### Extra exercise. Add more product-details.
+Open the file 'index.html' and add a few more 
+product-details 
+to the template.
 
-Your html should look like this:
+Save all the files.
+
+Run the setup using the following command from the root of your labfolder:
 ```
-<html>
-<head>
-    <link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/polymer/polymer.html"/>
-    <link rel="import" href="./product/product-detail.html"/>
-</head>
-<body>
-    <dom-module id="my-app">
-        <template>
-            <product-detail on-bought="_bought" on-outofstock="_outofstock"></product-detail>
-        </template>
-        <script>          
-            Polymer({
-                is:'my-app',
-                _outofstock:function(){ console.log("product out of stock")},
-                _bought:function(){ console.log("product bought")}
-            })
-        </script>
-    </dom-module>
-    <my-app><my-app>
-</body>
-</html>
+lite-server
 ```
-
-
-Save all the files and test the workings in the browser. Buy products while having the 
-developer tools open with the console tab selected. Check if the events are 
-written to the log.
-
-If you did not manage to complete the labs, be sure to inspect the solution in the _solution folder. 
-In this folder is a working copy of the code with the completed labs.
 
 ### Summary
-We have written a component with its own API. We have written a couple of properties, a few methods
-and we subscribed to and raised some events. This is, hover still a single, unstyled element.
-
-Let's add some more logic to this element in future labs.
+In this lab we have implemented a general behavior that makes elements highlightable. 
+Clicking an item takes care of toggeling an attribute and a class. 
+These changes can be used for styling our elements. 
 
 -= End of lab =-

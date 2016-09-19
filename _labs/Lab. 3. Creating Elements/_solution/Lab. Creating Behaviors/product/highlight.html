@@ -4,12 +4,14 @@
 (function(){
 window.mybehaviors = window.mybehaviors || {};
 window.mybehaviors.highlight = {
+    /* properties */
     properties:{
           highlight:{
               type:Boolean,
               reflectToAttribute:true
           }
     },
+    /* listeners */
     listeners: {
         click: '_toggleHighlight'
       },
