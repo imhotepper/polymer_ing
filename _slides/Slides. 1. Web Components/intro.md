@@ -16,7 +16,7 @@ Web Components consist of 4 main features from HTML5:
 * HTML Imports 
     * Importing HTML documents into other documents
 * HTML Templates 
-    * The template tag, inert chunks of DOM
+    * The template tag, insert chunks of DOM
 
 These features can be used separately or all together
 

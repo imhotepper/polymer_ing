@@ -1,165 +1,248 @@
-# Creating Elements
+# Observers
 
---- 
-
-### Creating Elements
-
-Lessons:
-- Anatomy of an element
-- Properties
-- Methods
-- Event Listeners
-- Data Binding
---- 
-
-### Anatomy of an element
-An element definition has an 
-* imperative part
-    - call to Polymer({...})
-* declarative part. T
-    - the 'dom-module' element. 
-    
-The parts of an element's definition may be placed in the same html file 
-or separate files.
 ---
+### Observers
 
-### Declarative part
-The declarative part of an element has 
-the following template
+Observers are methods invoked when observable changes occur
+to the element's data. 
 
+There are two basic types of observers
+* Simple observers observe a single property
+* Complex observers observe one or more properties or paths
+
+A computed property is a complex observer that returns value
+
+---
+### Observers
+An observer is
+* a property effect
+* synchronous
+
+---
+### Simple observers
+* declared in the properties object
+* always observe a single property
+* fired the first time the property becomes defined (!= undefined)
+* on every change thereafter
+    -even if the property becomes undefined
+* don't fire on subproperty changes, or array mutation
+* observer method receives the new and old values
+
+---
+### Example observer
 ```
-<dom-module id="icon-toggle">
-  <template>
-    <style>
-      /* local styles go here */
-      :host {
-        display: inline-
-        block;
-      }
-    </style>
-    <!-- local DOM goes here -->
-    <span>Not much here yet.</span>
+Polymer({ is: 'x-custom',
+  properties: {
+    disabled: {
+      type: Boolean,
+      observer: '_disabledChanged'
+  },
+  _disabledChanged: function(newValue, oldValue) {
+    this.toggleClass('disabled', newValue);
+  },
+});
+```
+
+---
+### Complex observers
+* declared in the observers array
+```
+observers: [
+  'userListChanged(users.*, filter)'
+]
+```
+* can monitor one or more paths
+    -  called the observer's dependencies
+
+---
+### Complex observer dependencies
+Each dependency represents
+* a specific property 
+    - for example, firstName
+* a specific subproperty 
+    - for example, address.street
+* mutations on a specific array 
+    - for example, users.splices
+* all subproperty changes and array mutations below a given path 
+    - for example, users.*
+
+---
+### Complex observer dependencies
+* The observer method is called with one argument for each dependency
+* The argument type varies depending on the path being observed.
+    - simple (sub)property dependencies argument is new value 
+    - array mutation or wildcard paths argument is change record 
+
+---
+### Handling of undefined values 
+* depends on the number of properties being observed
+    - The initial call is deferred until all of the dependencies are defined
+    - For a single property observer
+        - called each time even when undefined
+    - multi prop observer
+        - called each time unless one of props is undefined
+
+---
+### Example complex observer
+```
+Polymer({
+  is: 'x-custom',
+  properties: {
+    preload: Boolean, src: String, size: String
+  },
+  observers: [
+    'updateImage(preload, src, size)'
+  ],
+  updateImage: function(preload, src, size) {
+    // ... do work using dependent values
+  }
+});
+```
+
+---
+### Observe sub-property changes
+To observe changes in object sub-properties
+* define an observers array
+* add an item to the observers array
+    - or `onNameChange(dog.name)` 
+* define the method in your element prototype. 
+
+To properly detect the sub-property change, updated it
+in one of the following two ways
+* via a property binding
+* By calling set
+
+---
+### Example sub-prop observer
+```
+ <template>
+    <!-- Sub-property is updated via property binding. -->
+    <input value="{{user.name::input}}">
   </template>
+  <script>
+    Polymer({ is: 'x-sub-property-observer',
+      properties: {
+        user: { type: Object,
+                value: function() {return {};}
+        }
+      },
+      observers: [
+        'userNameChanged(user.name)'
+      ],
+      userNameChanged: function(name) {
+        console.log('new name: ' + name);
+      },
+    });
+  </script>
 ```
 
-### Declarative part(2)
-* The 'dom-module' tag wraps the local DOM definition. 
-The id attribute shows that this module is called icon-toggle.
-* The 'template' defines the local DOM structure and styling. 
-This is where you'll add markup for your custom element.
-* The 'style' element define styles scoped to the local DOM.
-They don't affect the rest of the document.
-* The :host pseudo-class matches the element defined.
-This is the element that contains or hosts the local DOM tree.
-
-What is the local DOM?
 ---
+### Observe array mutations
+* to call an observer function whenever an array item is added or deleted
+* observer receives change record with the mutation as set of array splices
 
-### Local DOM
+To observe array mutations and changes to sub-properties 
+of array items, use a wildcard path!
 
-* Local DOM
-    - DOM thats independent from the 'normal' DOM
-    - Implemented as Shadow DOM
-    - Implemented as Shady DOM (custom implementation)
-* Light DOM
-    - the 'normal' DOM
-
-Polymer will automatically clone the template's contents 
-into the element's local DOM.
-
-Currently Polymer uses shady DOM by default on all browsers.
-
-### Automatic Node Finding
-
-Nodes specified in template with an id is stored on the this.$ hash by id.
-```
-<template>
-    Hello <span id="name"></span>!
-</template>
-<script>
-    Polymer({
-      is: 'x-custom',
-      ready: function() {
-        this.$.name.textContent = this.tagName;
-    }});
-</script>
-```
-
-Statically created instance nodes only!
---- 
-
-### Automatic Node Finding(2)
-* For locating dynamically-created nodes, use the $$ method
-    - this.$$(selector)
-        - returns first node in local DOM that matches selector
-* $$ is alias for Polymer.dom(this.root).querySelector():
 ---
-
-### DOM distribution
-Composition of element's light DOM with its local DOM
-* Content Element
-    - provides insertion point
-    - supports select attribute
-
+### Splice observer
+* specify a path to an array followed by .splices 
+in your observers array.
 ```
-<template>
-  <header>Local dom header followed by distributed dom.</header>
-  <content select=".content"></content>
-  <footer>Footer after distributed dom.</footer>
-</template>
+observers: [
+  'usersAddedOrRemoved(users.splices)'
+]
 ```
 
+---
+### Splice observer
+* observer receives change record of mutations. 
+* each record provides `indexSplices`
+* each `indexSplices` record contains
+    - index. Position where the splice started
+    - removed. Array of removed items
+    - addedCount. Number of new items inserted at index
+    - object: A reference to the array in question
+    - type: The string literal 'splice'
 
-By including the html 
 ```
-<link rel="import" href="/element-set/element-set.html" />
+---
+### Example array observer
 ```
-into your page, you can use the elements like
-
+Polymer({ is: 'x-custom',
+  properties: {
+    users: { type: Array,
+            value: function() {
+                return []; }}
+  },
+  observers: [ 'usersAddedOrRemoved(users.splices)'],
+  usersAddedOrRemoved: function(changeRecord) {
+    if (changeRecord) {
+      changeRecord.indexSplices.forEach(function(s) {
+        s.removed.forEach(function(user) {
+          console.log(user.name + ' was removed');
+        }); }, this); }
+  },
+  ready: function() { this.push('users', {name: "Jack Aubrey"}); },
+});
 ```
-<page-toolbar></page-toolbar>
+---
+### Observe all path changes 
+use the wildcard path (*)
+* when any (deep) sub-property of an object or array changes
+
+argument passed to observer holds
+* path: path to the property that changed
+* value: new value of the path that changed
+* base: object matching the non-wildcard portion of the path
+
+---
+### Example deep observer
 ```
-
---- 
-
-### Bind the elements together
-Elements have properties, methods and fire events
-You can connect elements by using data binding and event handling
-
-Here is an example of two connected elements
-```
-<iron-ajax auto url='/data/data.json' handle-as='json' last-response='{{response}}' />
-<iron-list items="[[response]]">...</iron-list>
-```
-
-### Listen to element events
-Elements fire events wich you can use to act upon
-
-Below is an example of an event
-```
-<iron-ajax auto url='...' handle-as='json' on-response='handleResponse' />
-<paper-button on-tap='handleClick' />
-```
-
-The eventhandlers are functions you have to provide, just like regular DOM
-
-### Using inline modules
-Polymer provides <code>dom-module</code> to provide for document level 
-elements. 
-It is usefull to wrap the elements in a dom-module for
-* databinding support
-* theming support
-* scoping
-
-### Using inline modules
-To declare an inline dom-module, you write
-```
-<dom-module id='my-app' [is='dom-bind|dom-if|dom-repeat']>
-<style>... your styles here ...</style>
-<template>... your markup here ...</template>
-<script>... your script here ...</script>
+<dom-module id="x-deep-observer">
+  <template>
+    <input value="{{user.name.first::input}}"
+           placeholder="First Name">
+    <input value="{{user.name.last::input}}"
+           placeholder="Last Name">
+  </template>
+  <script>
+    Polymer({ is: 'x-deep-observer',
+      properties: {
+        user: {
+          type: Object,
+          value: function() { return {'name':{}};}}
+        },
+      observers: ['userNameChanged(user.name.*)'],
+      userNameChanged: function(changeRecord) {
+        console.log('value: ' + changeRecord.value);
+      },});
+  </script>
 </dom-module>
 ```
 
+---
+### ANTI PATTERN!
+```
+properties: {
+  firstName: { type: String, observer: 'nameChanged'},
+  lastName: { type: String }
+},
+// WARNING: ANTI-PATTERN! DO NOT USE
+nameChanged: function(newFirstName, oldFirstName) {
+  // this.lastName could be undefined!
+  console.log('new name:', newFirstName, this.lastName);
+}
+```
 
+---
+<!-- .slide: data-background="url('images/demo.jpg')" --> 
+<!-- .slide: class="lab" -->
+## Demo time!
+Demo. Deep observers 
 
+---
+<!-- .slide: data-background="url('images/lab2.jpg')" --> 
+<!-- .slide: class="lab" -->
+## Lab time!
+Creating observers
