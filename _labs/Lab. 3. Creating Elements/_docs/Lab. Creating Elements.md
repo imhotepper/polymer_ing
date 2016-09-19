@@ -12,12 +12,12 @@ Create the following file and directory structure:
 - product\product-details.html
 - index.html
 
-Give the index html an appropriate content. Make sure to refer to the
+Give the index.html appropriate content. Make sure to refer to the
 Polymer html include inside the head section of your HTML page.
 
-Include the 'products\product-details.html' into the head of your index.html
+Include the 'products\product-details.html' in the head of your index.html
 
-Define an element that displays a product title, price, stock and details. Define these
+Define an element that displays a product's title, price, stock and details. Define these
 as properties on your element. 
 
 An example of the element is given below. 
@@ -90,7 +90,7 @@ typing the following in the console screen of Chrome:
 $0.stock = 0
 ```
 Is the button disabled?
-type the following in the console screen again:
+Type the following in the console screen again:
 ```
 $0.stock = 10
 ```
@@ -118,25 +118,25 @@ addStock: function(value){
 }
 ```
 
-Test the component in the browser. Buy Ipads and check if the button is disabled 
+Test the component in the browser. Buy products and check if the button is disabled 
 when the stock runs out.
 
 ### Step 4. Add events to the product-details component
 Open the file 'product/product-details.html' and add two events to the product-detail
 component:
-- Add an event that gets fired upon buy of the item.
+- Add an event that gets fired when the item is bought.
 Name this event `bought`.
-This event can be fired when the user pressed the buy button.
+This event should be fired when the user pressed the buy button.
 
 - Add an event that gets fired when the stock runs out.
 Name this event `outofstock`.
-This event can be fired upon stock changes. Register an observer in 
+This event should be fired upon stock changes. Register an observer in 
 the property that takes care of checking and perhaps firing the event.
 
 Open the file 'index.html' and write code that declares handlers for 
-these events and writes their occurence to the console.log.
+these events and write their occurence to the console.log.
 
-Note that you have to rewrite the index.html so it uses an automatic dom-module
+Note that you have to rewrite the index.html so that it uses an automatic dom-module
 which wrappes the product-detail module.
 
 Your html should look like this:
@@ -170,11 +170,11 @@ developer tools open with the console tab selected. Check if the events are
 written to the log.
 
 If you did not manage to complete the labs, be sure to inspect the solution in the _solution folder. 
-In this folder is a working copy of the code with the completed labs.
+In this folder you can find a working copy of the code with the completed labs.
 
 ### Summary
 We have written a component with its own API. We have written a couple of properties, a few methods
-and we subscribed to and raised some events. This is, hover still a single, unstyled element.
+and we subscribed to and raised some events. This is, hover, still a single, unstyled element.
 
 Let's add some more logic to this element in future labs.
 
