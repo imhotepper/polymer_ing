@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/polymer/polymer.html" />
+</head>
+<body class="fullbleed flex">
+<dom-module is="my-app">
+<template>
+    <template id="list" is="dom-repeat" items="{{data}}">
+        <span>{{ item.title }}</span>
+        <button on-click="toggleSelection">Select</button>
+    </template>
+
+    <array-selector id="selector" items="{{data}}" selected="{{selected}}"  toggle></array-selector>
+
+    <div> Selected item: {{ selected.title }} </div>
+    <div> Selected items: </div>
+    <template is="dom-repeat" items="{{selected}}">
+        <div>{{ item.title }}</div>
+    </template>
+
+
+</template>
+<script>
+Polymer({
+is:"my-app",
+properties:{
+    data:{
+        type:Array,
+        value:[
+            { title:'test1'},
+            { title:'test2'},
+            { title:'test3'},
+            { title:'test4'},
+            { title:'test5'},
+            { title:'test6'},
+            { title:'test7'},
+        ]
+    }
+},
+toggleSelection: function(e) {
+      //  var item = this.$.list.itemForElement(e.target);
+        this.$.selector.select(event.model.item);
+      }
+});
+</script>
+</dom-module>
+<my-app></my-app>
+</body>
+</html>

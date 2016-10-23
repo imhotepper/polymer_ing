@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/polymer/polymer.html" />
+</head>
+<body class="fullbleed flex">
+<dom-module is="my-app">
+<template>
+    a list of items
+    <template is="dom-repeat" items="{{data}}">
+        <div>{{ item.title }} <button on-tap="logItem">log this item</div>
+    </template>
+
+
+    a list of items as json
+    <template is="dom-repeat" items='[{"title":"john"},{"title":"test"},{"title":"polymer"}]'>
+        <div>{{ item.title }}
+    </template>
+
+</template>
+<script>
+Polymer({
+is:"my-app",
+properties:{
+    data:{
+        type:Array,
+        value:[{title:'john'},{title:'test'},{title:'polymer'}]
+    }
+},
+    ready: function() {
+       setTimeout(function(){
+           console.log(`change the title`);
+           this.data[1].title = "someone";
+           this.notifyPath('data.1.title');
+       }.bind(this), 2000);
+    },
+    logItem: function(){
+        console.log('item clicked:', event.model.item);
+    }
+});
+</script>
+</dom-module>
+<my-app></my-app>
+</body>
+</html>

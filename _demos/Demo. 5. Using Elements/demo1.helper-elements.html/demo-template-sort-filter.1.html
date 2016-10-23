@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/polymer/polymer.html" />
+</head>
+<body class="fullbleed flex">
+<dom-module is="my-app">
+<template>
+    a list of items
+    <template is="dom-repeat" items="{{todos}}" filter="{{_isDone(todos.*)}}" sort="{{_getPriority(todos.*)}}" >
+        <div>{{ item.priority }} {{ item.title }} {{ item.done }} 
+            <button on-tap="setDone">Done</button>
+            <button on-tap="setHigherPrio">Up Prio</button>
+            <button on-tap="setLowerPrio">Lower Prio</button>
+        </div>
+    </template>
+</template>
+<script>
+Polymer({
+    is:"my-app",
+    properties:{
+        todos:{
+            type:Array,
+            value:[
+                {title:'john', done:false, priority:2},
+                {title:'test', done:true, priority:3},
+                {title:'polymer', done:false, priority:1}
+            ]
+        }
+    },
+    _isDone:function(array){
+        return function(item) { 
+            return !item.done
+        };
+    },
+    _getPriority: function(array){
+        return function(a, b){
+            return b.priority - a.priority;
+        }
+    },
+    setHigherPrio: function(){
+        event.model.item.priority++;
+        this.notifyPath('todos.' + this.todos.indexOf(event.model.item) + '.priority');
+    },
+    setLowerPrio: function(){
+        event.model.item.priority--;
+        this.notifyPath('todos.' + this.todos.indexOf(event.model.item) + '.priority');
+    },
+    setDone: function(){
+        console.log(`model.item`, event.model);
+        event.model.item.done = true; 
+        this.notifyPath('todos.' + this.todos.indexOf(event.model.item) + '.done');
+        
+    }
+});
+</script>
+</dom-module>
+<my-app></my-app>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="import" href="./bower_components/polymerfire/firebase-app.html">
+       <link rel="import" href="./bower_components/polymerfire/polymerfire.html">
+    </head>
+    <body class="fullbleed flex">
+        <dom-module id="my-app" is="dom-bind">
+            <template>
+                <style>
+                    div { display:inline-block;padding:50px;margin:10px;box-shadow:5px 5px 5px #cdc;}
+                </style>
+                <div>
+                <template is="dom-if" if="[[areTodos(todos.*)]]">
+                    - nothing todo today -
+                </template>
+                <iron-list items="[[todos]]">
+                    <template>
+                    <ul><li>[[item.title]]</li></ul>
+                    </template>
+                </iron-list>
+                <input type="text" value="{{todo.title::change}}"></input>
+                <button on-tap="saveTodo">Save</button>
+
+                <firebase-app
+                    name="todoapp"
+                    api-key="AIzaSyDyzdR_qn6CX1fX0P1155kdR3njcujDgmk"
+                    auth-domain="todoapp-7013c.firebaseapp.com"
+                    database-url="https://todoapp-7013c.firebaseio.com">
+                </firebase-app>
+
+                <firebase-document
+                    id="document"
+                    app-name="notes"
+                    path="test"
+                    data="{{todo}}">
+                </firebase-document>
+
+                </div>
+            </template>
+            <script>
+                Polymer({
+                    is:'my-app',
+                    properties:{
+                      todo:{
+                        type:Object,
+                        value:{ _id:1, title:'', content:''}
+                      },
+                        todos:{
+                            type:Array,
+                            value:[]
+                        }
+                    },
+                    areTodos: function(){
+                        return this.todos.length == 0;
+                    },
+                    saveTodo: function(){
+                        this.push('todos', this.todo);
+                        var id = this.todo._id++;
+                        this.todo = { _id:id, title:'', content:''};
+                    }
+                });
+            </script>
+        </dom-module>
+        <h1>Ajax</h1>
+        <p> This todo list needs its items from the server, go get them!</p>
+        <p> Implement the retrieval and the storage of todos using iron-ajax elements.</p>
+        <my-app></my-app>
+    </body>
+</html>

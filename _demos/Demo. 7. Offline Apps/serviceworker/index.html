@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+<script>
+    <!-- register a custom service worker -->
+    if ('serviceWorker' in navigator){
+        console.log('registering the service worker');
+        navigator.serviceWorker.register('./my-workerwithcache.js')
+        .then(function(reg){
+            console.log(`registration succeeded for scope: '${reg.scope}`);
+        });
+    } else {
+        console.log('no serviceworker support');
+    }
+
+
+</script>
+</body>
+</html>

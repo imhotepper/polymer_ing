@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/polymer/polymer.html" />
+         <link rel="import" href="/bower_components/app-router/app-router.html">
+    </head>
+    <body class="fullbleed flex">
+       <app-router>
+        <!-- matches an exact path -->
+            <app-route path="/home" import="/pages/home-page.html"></app-route>
+
+            <!-- matches using a wildcard -->
+            <app-route path="/customer/*" import="/pages/customer-page.html"></app-route>
+
+            <!-- matches using a path variable -->
+            <app-route path="/order/:id" import="/pages/order-page.html"></app-route>
+
+            <!-- matches a pattern like '/word/number' -->
+            <app-route path="/^\/\w+\/\d+$/i" regex import="/pages/regex-page.html"></app-route>
+
+            <app-route path="/example">
+            <template>
+                <p>Inline template FTW!</p>
+            </template>
+            </app-route>
+
+            <!-- matches everything else -->
+            <app-route path="*" import="/pages/not-found-page.html"></app-route>
+        </app-router>
+    </body>
+</html>

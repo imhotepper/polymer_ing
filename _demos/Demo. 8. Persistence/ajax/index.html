@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/polymer/polymer.html" />
+        <link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/paper-elements/paper-elements.html" />             
+         <link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/iron-elements/iron-elements.html" />
+    </head>
+    <body class="fullbleed flex">
+        <dom-module id="my-app" is="dom-bind">
+            <template>
+                <style>
+                    .container { border:1px solid black;display:block;padding:50px;margin:10px;box-shadow:5px 5px 5px #cdc;}
+                </style>
+                <div class="container">
+               <iron-ajax auto url="./data/data.json" on-response="response" handle-as="json" last-response="{{todos}}"></iron-ajax>
+               <ul>
+               <iron-list id="list" items="{{todos}}" as="item">
+                   <template>
+                       <li>item [[item.name]]</li>
+                   </template>
+               </iron-list>
+               </ul>
+               </div>
+            </template>
+            <script>
+                Polymer({
+                    is:'my-app',
+                    properties:{
+                        todos:{
+                            type:Array, value:[]
+                        }
+                    },
+                    response: function(r, d){
+                        this.$.list.fire('iron-resize');
+                    }
+                });
+            </script>
+        </dom-module>
+        <my-app></my-app>
+
+        
+            
+    </body>
+</html>

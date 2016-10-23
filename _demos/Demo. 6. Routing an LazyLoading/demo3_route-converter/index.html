@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/polymer/polymer.html" />
+        <link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/app-elements/app-elements.html" />
+        <link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/app-route/app-route-converter.html" />
+        <link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/iron-elements/iron-elements.html" />
+    </head>
+    <body class="fullbleed flex">
+        <dom-module is="my-app">
+            <template>
+                Path: <input is="iron-input" bind-value="{{path}}"><br/>
+                querystring:  <input is="iron-input" bind-value="{{query}}"><br/>
+
+                <iron-query-params params-string="{{query}}" params-object="{{queryParams}}"></iron-query-params>
+
+                <app-route-converter path="{{path}}" query-params="{{queryParams}}" route="{{route}}"></app-route-converter>
+                 QueryParams: {{ _getQP(query)}}
+                 Route built: {{ _getRoute(route.*)}}
+
+                 <app-location route="{{route}}"></app-location>
+           </template>
+           <script>
+               Polymer({
+                   is:'my-app',
+                   _getRoute: function(){
+                       return JSON.stringify(this.route);
+                   },
+                   _getQP: function(){
+                       return JSON.stringify(this.queryParams);
+                   }
+               });
+            </script>
+
+            <!-- 
+                http://localhost:3000/?admin=true#/test
+            -->
+        </dom-module>
+        <h1>Route converter</h1>
+        <my-app></my-app>
+    </body>
+</html>
