@@ -1,9 +1,9 @@
-## Lab 1. Basic Setup
-In this lab you will start to create a web application using helper elements. We are going to create an election app.. The idea is that we can select 2 opponents and select one for 
-president. This case is used throughout the rest of the course. Each lab builds onto the next.
-> duration: 45 minutes
+## Lab 1. Using Neon Animated Pages
+In the previous lab we've used iron-pages to create multiple 'pages'. Let's add some animations 
+to our application.
+> duration: 30 minutes
 
-### Step 1. Create a polymer setup
+### Step 1. Use Neon-Animated-Pages
 Open file 'index.html' inside your current folder. If the exercise was not successful in the last
 lab, you can copy and paste a version from the _solution folder from the last exercise.
 

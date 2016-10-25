@@ -1,21 +1,21 @@
-# Offline Apps
+# On- Offline detection
 
 ---
 ### Agenda
-* Whats needed
-* ViewPorts
-* Web App manifest
-* On/Offline detection
-* Service Workers
-* Platinum Elements
+* using vanilla JavaScript
+* using Polymer Behavior
 
 ---
-### Whats needed
-To make apps work offline, we need to 
-* Make App Installable
-    * Manifest.JSON
-* Cache the resources
-* Cache the data
+### JavaScript on- Offline
+just HTML5
+To detect
+* get current state
+  * navigate.onLine property
+* subscribe to change events
+```
+   addEventListener('online', function(){});
+   addEventListener('offline', function(){});
+```
 
 ---
 ### ViewPorts and Manifest.JSON
@@ -122,4 +122,3 @@ Demo Manifest.json
 <!-- .slide: class="lab" -->
 ## Lab time!
 Lab Manifest.json
-
