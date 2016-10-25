@@ -1,0 +1,61 @@
+<link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/paper-elements/paper-elements.html" />             
+<link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/iron-elements/iron-elements.html" />
+<link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/neon-animation/neon-animation.html" />
+
+
+<dom-module id="square-page">
+  <style>
+    .header {
+      height: 40px;
+        width: 100%;
+      background: coral;
+    }
+    .body {
+      text-align: center;
+      padding: 8px;
+    }
+    .square {
+      display: inline-block;
+      width: 150px;
+      height: 150px;
+      margin: 8px;
+      background: #303f9f;
+    }
+  </style>
+  <template>
+    <div id="header" class="header"></div>
+    <div class="body">
+      <div id="square" class="square"></div>
+    </div>
+  </template>
+  <script>
+    Polymer({
+        is: 'square-page',
+        behaviors: [
+            Polymer.NeonSharedElementAnimatableBehavior
+        ],
+        properties: {
+  animationConfig: {
+    value: function() {
+      return {
+        // the incoming page defines the 'entry' animation
+        'entry': {
+          name: 'hero-animation',
+          id: 'hero',
+          toPage: this
+        }
+      }
+    }
+  },
+  sharedElements: {
+    value: function() {
+      return {
+        'hero': this.$.header
+      }
+    }
+  }
+}
+    });
+    </script>
+</dom-module>
+

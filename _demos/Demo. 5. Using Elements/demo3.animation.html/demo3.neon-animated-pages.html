@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/paper-elements/paper-elements.html" />             
+        <link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/iron-elements/iron-elements.html" />
+        <link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/neon-animation/neon-animation.html" />
+        <link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/neon-animation/neon-animated-pages.html" />
+    </head>
+    <body>
+        <dom-module id="my-pages">
+           <template>
+                <button on-tap="showNext">show next</button>
+                <neon-animated-pages id="pages" class="flex" selected="0" entry-animation="slide-from-right-animation" exit-animation="fade-out-animation">
+                <section>
+                    The first animated page goes here
+                </section>
+                <section>
+                    The second animated page goes here
+                </section>
+                </neon-animated-pages>
+            </template>
+            <script>
+               Polymer({ is: 'my-pages', showNext: function(){
+                   this.$.pages.selectNext();
+               }});
+            </script>
+        </dom-module>
+        <my-pages></my-pages>
+    </body>
+</html>

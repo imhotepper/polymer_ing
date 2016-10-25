@@ -1,0 +1,61 @@
+<link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/paper-elements/paper-elements.html" />             
+<link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/iron-elements/iron-elements.html" />
+<link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/neon-animation/neon-animation.html" />
+
+
+<dom-module id="circle-page">
+    <style>
+        .circle {
+            display: inline-block;
+            box-sizing: border-box;
+            width: 100px;
+            height: 100px;
+            margin: 16px;
+            border-radius: 50%;
+            background: coral;
+        }
+    </style>
+    <template>
+        <div><div id="circle" class="circle"></div> </div>
+    </template>
+    <script>
+
+    Polymer({
+        is: 'circle-page',
+        behaviors: [
+            Polymer.NeonSharedElementAnimatableBehavior
+        ],
+        properties: {
+  animationConfig: {
+    value: function() {
+      return {
+        // the outgoing page defines the 'exit' animation
+        'exit': {
+          name: 'hero-animation',
+          id: 'hero',
+          fromPage: this
+        }
+      }
+    }
+  },
+  sharedElements: {
+    value: function() {
+      return {
+        'hero': this.$.circle
+      }
+    }
+  }
+},
+        listeners: {
+        'click': '_onClick'
+        },
+
+        _onClick: function(event) {
+            this.fire('circle-click');
+        }
+    });
+
+    </script>
+
+</dom-module>
+

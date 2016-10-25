@@ -1,0 +1,299 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'bower',
+1 verbose cli   'install',
+1 verbose cli   'kcmr/animated-countdown' ]
+2 info using npm@3.10.3
+3 info using node@v6.3.1
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 silly fetchPackageMetaData bower
+8 silly fetchPackageMetaData install
+9 silly fetchPackageMetaData kcmr/animated-countdown
+10 silly fetchNamedPackageData bower
+11 silly mapToRegistry name bower
+12 silly mapToRegistry using default registry
+13 silly mapToRegistry registry https://registry.npmjs.org/
+14 silly mapToRegistry data Result {
+14 silly mapToRegistry   raw: 'bower',
+14 silly mapToRegistry   scope: null,
+14 silly mapToRegistry   escapedName: 'bower',
+14 silly mapToRegistry   name: 'bower',
+14 silly mapToRegistry   rawSpec: '',
+14 silly mapToRegistry   spec: 'latest',
+14 silly mapToRegistry   type: 'tag' }
+15 silly mapToRegistry uri https://registry.npmjs.org/bower
+16 silly fetchNamedPackageData install
+17 silly mapToRegistry name install
+18 silly mapToRegistry using default registry
+19 silly mapToRegistry registry https://registry.npmjs.org/
+20 silly mapToRegistry data Result {
+20 silly mapToRegistry   raw: 'install',
+20 silly mapToRegistry   scope: null,
+20 silly mapToRegistry   escapedName: 'install',
+20 silly mapToRegistry   name: 'install',
+20 silly mapToRegistry   rawSpec: '',
+20 silly mapToRegistry   spec: 'latest',
+20 silly mapToRegistry   type: 'tag' }
+21 silly mapToRegistry uri https://registry.npmjs.org/install
+22 silly fetchOtherPackageData kcmr/animated-countdown
+23 silly cache add args [ 'kcmr/animated-countdown', null ]
+24 verbose cache add spec kcmr/animated-countdown
+25 verbose request uri https://registry.npmjs.org/install
+26 verbose request no auth needed
+27 info attempt registry request try #1 at 21:47:35
+28 verbose request id 13b0d035467fd831
+29 http request GET https://registry.npmjs.org/install
+30 silly cache add parsed spec Result {
+30 silly cache add   raw: 'kcmr/animated-countdown',
+30 silly cache add   scope: null,
+30 silly cache add   escapedName: null,
+30 silly cache add   name: null,
+30 silly cache add   rawSpec: 'kcmr/animated-countdown',
+30 silly cache add   spec: 'github:kcmr/animated-countdown',
+30 silly cache add   type: 'hosted',
+30 silly cache add   hosted:
+30 silly cache add    { type: 'github',
+30 silly cache add      ssh: 'git@github.com:kcmr/animated-countdown.git',
+30 silly cache add      sshUrl: 'git+ssh://git@github.com/kcmr/animated-countdown.git',
+30 silly cache add      httpsUrl: 'git+https://github.com/kcmr/animated-countdown.git',
+30 silly cache add      gitUrl: 'git://github.com/kcmr/animated-countdown.git',
+30 silly cache add      shortcut: 'github:kcmr/animated-countdown',
+30 silly cache add      directUrl: 'https://raw.githubusercontent.com/kcmr/animated-countdown/master/package.json' } }
+31 verbose addRemoteGit caching kcmr/animated-countdown
+32 verbose addRemoteGit kcmr/animated-countdown is a repository hosted by github
+33 silly tryGitProto attempting to clone git://github.com/kcmr/animated-countdown.git
+34 silly tryClone cloning kcmr/animated-countdown via git://github.com/kcmr/animated-countdown.git
+35 verbose tryClone git-github-com-kcmr-animated-countdown-git-153645e3 not in flight; caching
+36 verbose correctMkdir /Users/johngorter/.npm/_git-remotes correctMkdir not in flight; initializing
+37 verbose request uri https://registry.npmjs.org/bower
+38 verbose request no auth needed
+39 info attempt registry request try #1 at 21:47:35
+40 verbose etag "1C0JRHJ0SPSI0OMSCBYWAQS8Y"
+41 http request GET https://registry.npmjs.org/bower
+42 info git [ 'clone',
+42 info git   '--template=/Users/johngorter/.npm/_git-remotes/_templates',
+42 info git   '--mirror',
+42 info git   'git://github.com/kcmr/animated-countdown.git',
+42 info git   '/Users/johngorter/.npm/_git-remotes/git-github-com-kcmr-animated-countdown-git-153645e3' ]
+43 http 200 https://registry.npmjs.org/install
+44 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+44 verbose headers   etag: '"4ZID2457HIOAG6R5OHH5B3I63"',
+44 verbose headers   'content-type': 'application/json',
+44 verbose headers   'content-encoding': 'gzip',
+44 verbose headers   'cache-control': 'max-age=300',
+44 verbose headers   'content-length': '7526',
+44 verbose headers   'accept-ranges': 'bytes',
+44 verbose headers   date: 'Mon, 24 Oct 2016 19:47:35 GMT',
+44 verbose headers   via: '1.1 varnish',
+44 verbose headers   age: '138',
+44 verbose headers   connection: 'keep-alive',
+44 verbose headers   'x-served-by': 'cache-ams4438-AMS',
+44 verbose headers   'x-cache': 'HIT',
+44 verbose headers   'x-cache-hits': '1',
+44 verbose headers   'x-timer': 'S1477338455.886123,VS0,VE0',
+44 verbose headers   vary: 'Accept-Encoding' }
+45 silly get cb [ 200,
+45 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+45 silly get     etag: '"4ZID2457HIOAG6R5OHH5B3I63"',
+45 silly get     'content-type': 'application/json',
+45 silly get     'content-encoding': 'gzip',
+45 silly get     'cache-control': 'max-age=300',
+45 silly get     'content-length': '7526',
+45 silly get     'accept-ranges': 'bytes',
+45 silly get     date: 'Mon, 24 Oct 2016 19:47:35 GMT',
+45 silly get     via: '1.1 varnish',
+45 silly get     age: '138',
+45 silly get     connection: 'keep-alive',
+45 silly get     'x-served-by': 'cache-ams4438-AMS',
+45 silly get     'x-cache': 'HIT',
+45 silly get     'x-cache-hits': '1',
+45 silly get     'x-timer': 'S1477338455.886123,VS0,VE0',
+45 silly get     vary: 'Accept-Encoding' } ]
+46 verbose get saving install to /Users/johngorter/.npm/registry.npmjs.org/install/.cache.json
+47 verbose correctMkdir /Users/johngorter/.npm correctMkdir not in flight; initializing
+48 http 200 https://registry.npmjs.org/bower
+49 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+49 verbose headers   etag: '"AW5GAGJHMUKGGC7MD1EDJPLQQ"',
+49 verbose headers   'content-type': 'application/json',
+49 verbose headers   'content-encoding': 'gzip',
+49 verbose headers   'cache-control': 'max-age=300',
+49 verbose headers   'content-length': '20827',
+49 verbose headers   'accept-ranges': 'bytes',
+49 verbose headers   date: 'Mon, 24 Oct 2016 19:47:35 GMT',
+49 verbose headers   via: '1.1 varnish',
+49 verbose headers   age: '128',
+49 verbose headers   connection: 'keep-alive',
+49 verbose headers   'x-served-by': 'cache-ams4143-AMS',
+49 verbose headers   'x-cache': 'HIT',
+49 verbose headers   'x-cache-hits': '1',
+49 verbose headers   'x-timer': 'S1477338455.883404,VS0,VE0',
+49 verbose headers   vary: 'Accept-Encoding' }
+50 silly get cb [ 200,
+50 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+50 silly get     etag: '"AW5GAGJHMUKGGC7MD1EDJPLQQ"',
+50 silly get     'content-type': 'application/json',
+50 silly get     'content-encoding': 'gzip',
+50 silly get     'cache-control': 'max-age=300',
+50 silly get     'content-length': '20827',
+50 silly get     'accept-ranges': 'bytes',
+50 silly get     date: 'Mon, 24 Oct 2016 19:47:35 GMT',
+50 silly get     via: '1.1 varnish',
+50 silly get     age: '128',
+50 silly get     connection: 'keep-alive',
+50 silly get     'x-served-by': 'cache-ams4143-AMS',
+50 silly get     'x-cache': 'HIT',
+50 silly get     'x-cache-hits': '1',
+50 silly get     'x-timer': 'S1477338455.883404,VS0,VE0',
+50 silly get     vary: 'Accept-Encoding' } ]
+51 verbose get saving bower to /Users/johngorter/.npm/registry.npmjs.org/bower/.cache.json
+52 verbose correctMkdir /Users/johngorter/.npm correctMkdir not in flight; initializing
+53 verbose mirrorRemote kcmr/animated-countdown git clone git://github.com/kcmr/animated-countdown.git
+54 verbose correctMkdir /Users/johngorter/.npm/_git-remotes correctMkdir not in flight; initializing
+55 verbose setPermissions kcmr/animated-countdown set permissions on /Users/johngorter/.npm/_git-remotes/git-github-com-kcmr-animated-countdown-git-153645e3
+56 verbose resolveHead kcmr/animated-countdown original treeish: master
+57 info git [ 'rev-list', '-n1', 'master' ]
+58 silly resolveHead kcmr/animated-countdown resolved treeish: 0e4903e6a89cba9ff502d34e979df41080ae21f4
+59 verbose resolveHead kcmr/animated-countdown resolved Git URL: git://github.com/kcmr/animated-countdown.git#0e4903e6a89cba9ff502d34e979df41080ae21f4
+60 silly resolveHead Git working directory: /var/folders/mj/163htgjs78z18dr4lkh5n3tm0000gn/T/npm-4169-7522fa67/git-cache-7ff276da/0e4903e6a89cba9ff502d34e979df41080ae21f4
+61 info git [ 'clone',
+61 info git   '/Users/johngorter/.npm/_git-remotes/git-github-com-kcmr-animated-countdown-git-153645e3',
+61 info git   '/var/folders/mj/163htgjs78z18dr4lkh5n3tm0000gn/T/npm-4169-7522fa67/git-cache-7ff276da/0e4903e6a89cba9ff502d34e979df41080ae21f4' ]
+62 verbose cloneResolved kcmr/animated-countdown clone Cloning into '/var/folders/mj/163htgjs78z18dr4lkh5n3tm0000gn/T/npm-4169-7522fa67/git-cache-7ff276da/0e4903e6a89cba9ff502d34e979df41080ae21f4'...
+62 verbose cloneResolved done.
+63 info git [ 'checkout', '0e4903e6a89cba9ff502d34e979df41080ae21f4' ]
+64 verbose checkoutTreeish kcmr/animated-countdown checkout Note: checking out '0e4903e6a89cba9ff502d34e979df41080ae21f4'.
+64 verbose checkoutTreeish
+64 verbose checkoutTreeish You are in 'detached HEAD' state. You can look around, make experimental
+64 verbose checkoutTreeish changes and commit them, and you can discard any commits you make in this
+64 verbose checkoutTreeish state without impacting any branches by performing another checkout.
+64 verbose checkoutTreeish
+64 verbose checkoutTreeish If you want to create a new branch to retain commits you create, you may
+64 verbose checkoutTreeish do so (now or later) by using -b with the checkout command again. Example:
+64 verbose checkoutTreeish
+64 verbose checkoutTreeish   git checkout -b <new-branch-name>
+64 verbose checkoutTreeish
+64 verbose checkoutTreeish HEAD is now at 0e4903e... add missing closing tag in code sample
+65 info git [ 'submodule', '-q', 'update', '--init', '--recursive' ]
+66 verbose updateSubmodules kcmr/animated-countdown submodule update
+67 error addLocal Could not install /var/folders/mj/163htgjs78z18dr4lkh5n3tm0000gn/T/npm-4169-7522fa67/git-cache-7ff276da/0e4903e6a89cba9ff502d34e979df41080ae21f4
+68 silly tryHTTPS attempting to clone git+https://github.com/kcmr/animated-countdown.git
+69 silly tryClone cloning kcmr/animated-countdown via git+https://github.com/kcmr/animated-countdown.git
+70 verbose tryClone git-https-github-com-kcmr-animated-countdown-git-18874123 not in flight; caching
+71 verbose correctMkdir /Users/johngorter/.npm/_git-remotes correctMkdir not in flight; initializing
+72 info git [ 'clone',
+72 info git   '--template=/Users/johngorter/.npm/_git-remotes/_templates',
+72 info git   '--mirror',
+72 info git   'https://github.com/kcmr/animated-countdown.git',
+72 info git   '/Users/johngorter/.npm/_git-remotes/git-https-github-com-kcmr-animated-countdown-git-18874123' ]
+73 verbose mirrorRemote kcmr/animated-countdown git clone https://github.com/kcmr/animated-countdown.git
+74 verbose correctMkdir /Users/johngorter/.npm/_git-remotes correctMkdir not in flight; initializing
+75 verbose setPermissions kcmr/animated-countdown set permissions on /Users/johngorter/.npm/_git-remotes/git-https-github-com-kcmr-animated-countdown-git-18874123
+76 verbose resolveHead kcmr/animated-countdown original treeish: master
+77 info git [ 'rev-list', '-n1', 'master' ]
+78 silly resolveHead kcmr/animated-countdown resolved treeish: 0e4903e6a89cba9ff502d34e979df41080ae21f4
+79 verbose resolveHead kcmr/animated-countdown resolved Git URL: git+https://github.com/kcmr/animated-countdown.git#0e4903e6a89cba9ff502d34e979df41080ae21f4
+80 silly resolveHead Git working directory: /var/folders/mj/163htgjs78z18dr4lkh5n3tm0000gn/T/npm-4169-7522fa67/git-cache-8cf79dbd/0e4903e6a89cba9ff502d34e979df41080ae21f4
+81 info git [ 'clone',
+81 info git   '/Users/johngorter/.npm/_git-remotes/git-https-github-com-kcmr-animated-countdown-git-18874123',
+81 info git   '/var/folders/mj/163htgjs78z18dr4lkh5n3tm0000gn/T/npm-4169-7522fa67/git-cache-8cf79dbd/0e4903e6a89cba9ff502d34e979df41080ae21f4' ]
+82 verbose cloneResolved kcmr/animated-countdown clone Cloning into '/var/folders/mj/163htgjs78z18dr4lkh5n3tm0000gn/T/npm-4169-7522fa67/git-cache-8cf79dbd/0e4903e6a89cba9ff502d34e979df41080ae21f4'...
+82 verbose cloneResolved done.
+83 info git [ 'checkout', '0e4903e6a89cba9ff502d34e979df41080ae21f4' ]
+84 verbose checkoutTreeish kcmr/animated-countdown checkout Note: checking out '0e4903e6a89cba9ff502d34e979df41080ae21f4'.
+84 verbose checkoutTreeish
+84 verbose checkoutTreeish You are in 'detached HEAD' state. You can look around, make experimental
+84 verbose checkoutTreeish changes and commit them, and you can discard any commits you make in this
+84 verbose checkoutTreeish state without impacting any branches by performing another checkout.
+84 verbose checkoutTreeish
+84 verbose checkoutTreeish If you want to create a new branch to retain commits you create, you may
+84 verbose checkoutTreeish do so (now or later) by using -b with the checkout command again. Example:
+84 verbose checkoutTreeish
+84 verbose checkoutTreeish   git checkout -b <new-branch-name>
+84 verbose checkoutTreeish
+84 verbose checkoutTreeish HEAD is now at 0e4903e... add missing closing tag in code sample
+85 info git [ 'submodule', '-q', 'update', '--init', '--recursive' ]
+86 verbose updateSubmodules kcmr/animated-countdown submodule update
+87 error addLocal Could not install /var/folders/mj/163htgjs78z18dr4lkh5n3tm0000gn/T/npm-4169-7522fa67/git-cache-8cf79dbd/0e4903e6a89cba9ff502d34e979df41080ae21f4
+88 silly trySSH attempting to clone git@github.com:kcmr/animated-countdown.git
+89 silly tryClone cloning kcmr/animated-countdown via git@github.com:kcmr/animated-countdown.git
+90 verbose tryClone git-github-com-kcmr-animated-countdown-git-bb04a5e6 not in flight; caching
+91 verbose correctMkdir /Users/johngorter/.npm/_git-remotes correctMkdir not in flight; initializing
+92 info git [ 'clone',
+92 info git   '--template=/Users/johngorter/.npm/_git-remotes/_templates',
+92 info git   '--mirror',
+92 info git   'git@github.com:kcmr/animated-countdown.git',
+92 info git   '/Users/johngorter/.npm/_git-remotes/git-github-com-kcmr-animated-countdown-git-bb04a5e6' ]
+93 error git clone --template=/Users/johngorter/.npm/_git-remotes/_templates --mirror git@github.com:kcmr/animated-countdown.git /Users/johngorter/.npm/_git-remotes/git-github-com-kcmr-animated-countdown-git-bb04a5e6: Cloning into bare repository '/Users/johngorter/.npm/_git-remotes/git-github-com-kcmr-animated-countdown-git-bb04a5e6'...
+93 error git clone --template=/Users/johngorter/.npm/_git-remotes/_templates --mirror git@github.com:kcmr/animated-countdown.git /Users/johngorter/.npm/_git-remotes/git-github-com-kcmr-animated-countdown-git-bb04a5e6: Permission denied (publickey).
+93 error git clone --template=/Users/johngorter/.npm/_git-remotes/_templates --mirror git@github.com:kcmr/animated-countdown.git /Users/johngorter/.npm/_git-remotes/git-github-com-kcmr-animated-countdown-git-bb04a5e6: fatal: Could not read from remote repository.
+93 error git clone --template=/Users/johngorter/.npm/_git-remotes/_templates --mirror git@github.com:kcmr/animated-countdown.git /Users/johngorter/.npm/_git-remotes/git-github-com-kcmr-animated-countdown-git-bb04a5e6:
+93 error git clone --template=/Users/johngorter/.npm/_git-remotes/_templates --mirror git@github.com:kcmr/animated-countdown.git /Users/johngorter/.npm/_git-remotes/git-github-com-kcmr-animated-countdown-git-bb04a5e6: Please make sure you have the correct access rights
+93 error git clone --template=/Users/johngorter/.npm/_git-remotes/_templates --mirror git@github.com:kcmr/animated-countdown.git /Users/johngorter/.npm/_git-remotes/git-github-com-kcmr-animated-countdown-git-bb04a5e6: and the repository exists.
+94 silly fetchPackageMetaData Error: Command failed: git clone --template=/Users/johngorter/.npm/_git-remotes/_templates --mirror git@github.com:kcmr/animated-countdown.git /Users/johngorter/.npm/_git-remotes/git-github-com-kcmr-animated-countdown-git-bb04a5e6
+94 silly fetchPackageMetaData Cloning into bare repository '/Users/johngorter/.npm/_git-remotes/git-github-com-kcmr-animated-countdown-git-bb04a5e6'...
+94 silly fetchPackageMetaData Permission denied (publickey).
+94 silly fetchPackageMetaData fatal: Could not read from remote repository.
+94 silly fetchPackageMetaData
+94 silly fetchPackageMetaData Please make sure you have the correct access rights
+94 silly fetchPackageMetaData and the repository exists.
+94 silly fetchPackageMetaData
+94 silly fetchPackageMetaData     at ChildProcess.exithandler (child_process.js:202:12)
+94 silly fetchPackageMetaData     at emitTwo (events.js:106:13)
+94 silly fetchPackageMetaData     at ChildProcess.emit (events.js:191:7)
+94 silly fetchPackageMetaData     at maybeClose (internal/child_process.js:852:16)
+94 silly fetchPackageMetaData     at Process.ChildProcess._handle.onexit (internal/child_process.js:215:5)
+94 silly fetchPackageMetaData  error for kcmr/animated-countdown { Error: Command failed: git clone --template=/Users/johngorter/.npm/_git-remotes/_templates --mirror git@github.com:kcmr/animated-countdown.git /Users/johngorter/.npm/_git-remotes/git-github-com-kcmr-animated-countdown-git-bb04a5e6
+94 silly fetchPackageMetaData Cloning into bare repository '/Users/johngorter/.npm/_git-remotes/git-github-com-kcmr-animated-countdown-git-bb04a5e6'...
+94 silly fetchPackageMetaData Permission denied (publickey).
+94 silly fetchPackageMetaData fatal: Could not read from remote repository.
+94 silly fetchPackageMetaData
+94 silly fetchPackageMetaData Please make sure you have the correct access rights
+94 silly fetchPackageMetaData and the repository exists.
+94 silly fetchPackageMetaData
+94 silly fetchPackageMetaData     at ChildProcess.exithandler (child_process.js:202:12)
+94 silly fetchPackageMetaData     at emitTwo (events.js:106:13)
+94 silly fetchPackageMetaData     at ChildProcess.emit (events.js:191:7)
+94 silly fetchPackageMetaData     at maybeClose (internal/child_process.js:852:16)
+94 silly fetchPackageMetaData     at Process.ChildProcess._handle.onexit (internal/child_process.js:215:5)
+94 silly fetchPackageMetaData   killed: false,
+94 silly fetchPackageMetaData   code: 128,
+94 silly fetchPackageMetaData   signal: null,
+94 silly fetchPackageMetaData   cmd: 'git clone --template=/Users/johngorter/.npm/_git-remotes/_templates --mirror git@github.com:kcmr/animated-countdown.git /Users/johngorter/.npm/_git-remotes/git-github-com-kcmr-animated-countdown-git-bb04a5e6' }
+95 silly rollbackFailedOptional Starting
+96 silly rollbackFailedOptional Finishing
+97 silly runTopLevelLifecycles Starting
+98 silly runTopLevelLifecycles Finishing
+99 silly install printInstalled
+100 verbose stack Error: Command failed: git clone --template=/Users/johngorter/.npm/_git-remotes/_templates --mirror git@github.com:kcmr/animated-countdown.git /Users/johngorter/.npm/_git-remotes/git-github-com-kcmr-animated-countdown-git-bb04a5e6
+100 verbose stack Cloning into bare repository '/Users/johngorter/.npm/_git-remotes/git-github-com-kcmr-animated-countdown-git-bb04a5e6'...
+100 verbose stack Permission denied (publickey).
+100 verbose stack fatal: Could not read from remote repository.
+100 verbose stack
+100 verbose stack Please make sure you have the correct access rights
+100 verbose stack and the repository exists.
+100 verbose stack
+100 verbose stack     at ChildProcess.exithandler (child_process.js:202:12)
+100 verbose stack     at emitTwo (events.js:106:13)
+100 verbose stack     at ChildProcess.emit (events.js:191:7)
+100 verbose stack     at maybeClose (internal/child_process.js:852:16)
+100 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:215:5)
+101 verbose cwd /Users/johngorter/Desktop/poltraining/Polymer_training/_labs/Lab. 5. Using Elements/_solution/Lab. Element Catalog
+102 error Darwin 16.1.0
+103 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "install" "bower" "install" "kcmr/animated-countdown"
+104 error node v6.3.1
+105 error npm  v3.10.3
+106 error code 128
+107 error Command failed: git clone --template=/Users/johngorter/.npm/_git-remotes/_templates --mirror git@github.com:kcmr/animated-countdown.git /Users/johngorter/.npm/_git-remotes/git-github-com-kcmr-animated-countdown-git-bb04a5e6
+107 error Cloning into bare repository '/Users/johngorter/.npm/_git-remotes/git-github-com-kcmr-animated-countdown-git-bb04a5e6'...
+107 error Permission denied (publickey).
+107 error fatal: Could not read from remote repository.
+107 error
+107 error Please make sure you have the correct access rights
+107 error and the repository exists.
+108 error If you need help, you may report this error at:
+108 error     <https://github.com/npm/npm/issues>
+109 verbose exit [ 1, true ]

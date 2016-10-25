@@ -1,0 +1,116 @@
+<html>
+    <head>
+        <link rel="import" href="./bower_components/polymer/polymer.html"/>
+        <link rel="import" href="./bower_components/iron-elements/iron-elements.html"/>
+        <link rel="import" href="./bower_components/paper-elements/paper-elements.html"/>
+    </head>
+    <body class="fullbleed layout vertical">
+        <dom-module is="dom-bind" id="my-app">
+            <template>
+                <paper-header-panel>
+                    <paper-toolbar><div>{{message}}</div></paper-toolbar>
+                    <iron-pages selected="0" id="pages">
+                         <div><strong>Candidates:</strong>
+
+                            <iron-list grid items="[[candidates]]">
+                                <template>
+                                <paper-card heading="Vote for" style="margin-top:2px;zoom:96%;width:45%;">
+                                        <div class="card-content">
+                                            [[item.name]] [[item.lastname]]
+                                        </div>
+                                        <div class="card-actions">
+                                            <paper-icon-button on-tap="_showInfo" icon="info-outline"></paper-icon-button>
+                                            <paper-fab on-tap="vote" mini icon="star" style="float:right;margin-bottom:5px;"></paper-fab>
+                                        </div>
+                                    </paper-card>
+                                </template>
+                            </iron-list>
+                        </div>
+                        <div>
+                            <paper-card>
+                                <div class="card-content">
+                                <div class="header">[[selectedCandidate.name]] [[selectedCandidate.lastname]] </div>
+                                <p>Biography for....</p>
+                                </div>
+                                <div class="card-actions">
+                                <p>Current votecount: {{_voteCount(selectedCandidate, votes.*)}} </p>
+                                <paper-button on-tap="_goBack">Back</paper-button>
+                                </div>
+                            </paper-card>
+                        </div>
+                    </iron-pages>
+
+                <div><strong>Votes:</strong>
+                    <template is="dom-repeat" items="[[votes]]" sort="_getSort" observe="time">
+                        <div>[[item.time]] -> [[item.candidate.name]]</div>
+                    </template>
+                </div>
+
+                 <div><strong>Result:</strong>
+                    <template is="dom-if" if="[[winner]]">
+                        <div>The next president: {{ winner }}</div>
+                    </template>
+                </div>
+                </paper-header-panel>
+            </template>
+             <script>
+                    Polymer({
+                        is:'my-app',
+                        properties:{
+                            winner:{
+                                type:String
+                            },
+                            selectedCandidate:{
+                                type:Object
+                            }
+                        },
+                        _goBack: function(){
+                            this.$.pages.selected=0;
+                        },
+                        _voteCount: function(candidate, votes){
+                            return  this.votes.filter(function(item){ 
+                                return  item.candidate == candidate;
+                            }).length;
+                        },
+                        _showInfo: function(){
+                            this.selectedCandidate = event.model.item;
+                            this.$.pages.selected = 1;
+                        },
+                        _getSort: function(a, b){
+                            return b.created - a.created;
+                        },
+                        getWinner: function(){
+                            var filtered = this.votes.filter(function(item){
+                                return item.candidate === this.candidates[0];
+                            }.bind(this));
+                            if (filtered.length == this.votes.length/2) return 'not defined, we need one more vote';
+                            if (filtered.length < this.votes.length/2)  return this.candidates[1].name;
+                            return this.candidates[0].name;
+                        },
+                        vote: function(){
+                            this.push('votes', new Vote(event.model.item, new Date().toLocaleTimeString()));
+                            if (this.votes.length > 10) this.winner = this.getWinner();
+                        }
+                    });
+            </script>
+        </dom-module>
+
+        <my-app></my-app>
+
+        <script>
+            var Candidate = function(name, lastname){
+                this.name = name;
+                this.lastname = lastname;  }
+            var Vote = function(candidate, time){
+                this.candidate = candidate;
+                this.created = Date.now();
+                this.time = time; }
+            document.querySelector("my-app").message = "Election Day!";
+            document.querySelector("my-app").candidates = [
+                new Candidate('Donald', 'Dump'),
+                new Candidate('Hilary', 'Reagan') ];
+            document.querySelector("my-app").votes = [];
+        </script>
+
+    </body>
+</html>
