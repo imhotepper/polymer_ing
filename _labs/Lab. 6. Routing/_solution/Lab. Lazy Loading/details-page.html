@@ -1,7 +1,6 @@
 <dom-module id="details-page">
     <template>
-         <app-route id="router" pattern="/:id" route="{{route}}" data="{{routeData}}" tail="{{routeTail}}"></app-route>
- 
+        <app-route id="router" pattern="/:id" route="{{route}}" data="{{routeData}}" tail="{{routeTail}}"></app-route>
         <div name="details">
             <paper-card>
                 <div class="card-content">
@@ -19,16 +18,9 @@
         Polymer({
             is:'details-page',
             properties:{
-                selectedCandidate:{
-                    type:Object, 
-                    notify:true
-                }
+                selectedCand1idate:{ type:Object,   notify:true }
             },
             observers: ['_viewChanged(routeData.id)'],
-            _routeChanged: function(view){
-                // lazyload the page
-                this.importHref(this.resolveUrl(view +'-page.html'))
-            },
             _viewChanged: function(view) {
                 setTimeout(function(){
                     if (this.routeData.id)
@@ -36,13 +28,10 @@
                 }.bind(this), 50);
             },
             _voteCount: function(candidate, votes){
-                return  this.votes.filter(function(item){ 
-                    return  item.candidate == candidate;
-                }).length;
+                return  this.votes.filter(function(item){  return  item.candidate == candidate;  }).length;
             },
              _goBack: function(){
                  this.fire('goback');
-                 
             }
         });
     </script>

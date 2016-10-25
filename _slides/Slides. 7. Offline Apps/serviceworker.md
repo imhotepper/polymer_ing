@@ -1,7 +1,6 @@
 # Service Worker in HTML5
 
 ---
-
 ### Introduction
 
 * Service Worker is a promise-based cache and proxy script for implementing
@@ -14,6 +13,7 @@ Service Workers provide base technology for
 
 Service Worker is part of HTML5
 
+---
 ### Service Worker
 
 > A service worker is a script that your browser runs in the background, 
@@ -23,6 +23,7 @@ Service Worker is part of HTML5
 * Service Worker is the better version of the Application cache
 * The service worker is a specific kind of web worker
 
+---
 ### Service Worker
 
 Some point about service workers:
@@ -32,23 +33,25 @@ Some point about service workers:
 * Service workers do have access to the IndexedDB API.
 * Service workers make extensive use of promises
 
+---
 ### Service worker lifecycle
 
 First installation
 <img src="./images/sw-lifecylce.png"/>
 
 
+---
 ### Service worker requirements
 
 * Service worker requires HTTPS, localhost with http will work but 
 upon deployment HTTPS is required!
-* Serivce workser have a scope
+* Service workser have a scope
     * Catch requests from clients under scope only
     * Max scope is the location of the workers
 
+---
 ### How to use service worker
- 
-Steps to implement 
+ Steps to implement 
 1. Registering the worker
 2. Add eventlisteners for different stages of the service worker
 
