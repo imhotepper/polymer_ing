@@ -1,31 +1,4 @@
-# Offline Apps
-
----
-### Agenda
-* Whats needed
-* ViewPorts
-* Web App manifest
-* On/Offline detection
-* Service Workers
-* Platinum Elements
-
----
-### Whats needed
-To make apps work offline, we need to 
-* Make App Installable
-    * Manifest.JSON
-* Cache the resources
-* Cache the data
-
----
-### ViewPorts and Manifest.JSON
-* Websites are scaled by default
-    * very small, bearely readable
-```
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-```
-Example: http://www.w3schools.com/css/css_rwd_viewport.asp
-
+# Web App Manifest
 
 ---
 ### Web App Manifest
@@ -36,7 +9,6 @@ Example: http://www.w3schools.com/css/css_rwd_viewport.asp
 * To integrate 
     * Create and deploy a manifest file.
     * Add a link element from the pages to the manifest file.
-
 
 ---
 ### Example Manifest
@@ -110,6 +82,18 @@ if (window.matchMedia('(display-mode: standalone)').matches) {
   console.log("Thanks!");
 }
 ```
+
+---
+### Requirements
+Chrome on Android will proactively suggest install of web app, 
+via a web app install banner. 
+
+Your web app needs to
+* have a valid web app manifest file
+* be served over HTTPS
+* have a valid service worker registered
+* have been visited twice, with at least five minutes between each visit
+
 
 --- 
 <!-- .slide: data-background="url('images/demo.jpg')" --> 

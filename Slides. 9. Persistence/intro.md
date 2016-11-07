@@ -7,7 +7,6 @@
 * Hybrid Storage
 * Polymer Storage Behavior
 
-
 ---
 ### Local Storage
 * Data persisted on the client
@@ -19,7 +18,6 @@
 
 ---
 ### Local Storage
-
 Example
 ```
 <paper-input value="{{idee}}"></paper-input>
@@ -29,7 +27,6 @@ Example
 
 ---
 ### Polymer Localforage
-
 * Third party component 
 * Uses async WebSql/IndexedDB storage
 
@@ -38,7 +35,6 @@ Example
 <x-foo value="{{value}}"></x-foo>
 <polymer-localforage id="localstorage" name="test" value="{{value}}"></polymer-localforage>
 ```
-
 more info
 <a href="https://customelements.io/addyosmani/polymer-localforage/">customelements.io</a>
 
@@ -56,7 +52,6 @@ Local Storage
 
 ---
 ### Remote Storage
-
 Remote storage often is BackEnd storage
 * accessible through service calls
 * persisted in server side database
@@ -73,7 +68,6 @@ Remote Database API
 
 ---
 ### Iron-Ajax
-
 Make AJAX calls through an element, example:
 ```
 <iron-ajax
@@ -113,7 +107,6 @@ You can run CoucheDB databases and PoucheDB databases remote or local.
 * app-pouchedb-index 
 * app-pouchedb-conflict-resolution
 * app-pouchedb-sync
-
 
 ---
 ### pouchedb setup

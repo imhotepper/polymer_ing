@@ -321,6 +321,7 @@ html:-moz-full-screen-ancestor {
       touch-action: none; }
 
 .reveal .slides {
+   font-size: 30px !IMPORTANT;
   position: absolute;
   width: 100%;
   height: 100%;
