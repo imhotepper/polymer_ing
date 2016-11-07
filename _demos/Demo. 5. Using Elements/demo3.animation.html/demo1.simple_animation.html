@@ -44,8 +44,11 @@
                     animate: function() {
                         // run scale-down-animation
                         this.playAnimation();
+
+                       
                     },
-                    _onNeonAnimationFinish: function() {
+                    _onNeonAnimationFinish: function(event, object) {
+                         console.log('arguments', event);
                         console.log('animation done!');
                     }
                     });

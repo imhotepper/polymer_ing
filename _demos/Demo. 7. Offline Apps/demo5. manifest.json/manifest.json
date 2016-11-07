@@ -1,0 +1,27 @@
+{
+    "short_name": "calculator",
+    "name": "Calculator to calculate",
+    "description": "Progressive web application demonstration",
+    "icons": [
+        {
+            "src": "launcher-icon.png",
+            "sizes": "48x48",
+            "type": "image/png"
+        },
+        {
+            "src": "launcher-icon-96.png",
+            "sizes": "96x96",
+            "type": "image/png"
+        },
+        {
+            "src": "launcher-icon-144.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "./index.html",
+    "display": "fullscreen",
+    "orientation": "portrait",
+    "theme_color": "#29BDBB",
+    "background_color": "#29BDBB"
+}

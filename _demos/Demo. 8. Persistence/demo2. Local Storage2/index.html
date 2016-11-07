@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/polymer/polymer.html" />
+        <link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/app-elements/app-elements.html" />
+        <link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/iron-elements/iron-elements.html" />
+        <link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/paper-elements/paper-elements.html" />
+    </head>
+    <body class="fullbleed flex">
+        <dom-module id="my-app" is="dom-bind">
+            <template>
+                <style>
+                    div { display:inline-block;padding:50px;margin:10px;box-shadow:5px 5px 5px #cdc;}
+                </style>
+                <div>
+                <template is="dom-if" if="[[areTodos(todos.*)]]">
+                    - nothing todo today -
+                </template>
+                <iron-list items="[[todos]]">
+                    <template>
+                    <ul><li>[[item]]</li></ul>
+                    </template>
+                </iron-list>
+                
+               <iron-localstorage name="testing" value="{{todos}}"  on-iron-localstorage-load-empty="initializeDefault"></iron-localstorage> 
+                
+                
+                <input type="text" value="{{todo::change}}"></input>
+                <button on-tap="saveTodo">Save</button>
+                </div>
+            </template>
+            <script>
+                Polymer({
+                    is:'my-app',
+                    properties:{
+                        todos:{
+                            type:Array
+                        }
+                    },
+                     // initializes default if nothing has been stored, IMPORTANT!
+                    initializeDefault: function() {
+                        this.todos = [];
+    	            },
+                    areTodos: function(){
+                        return this.todos.length == 0;
+                    },
+                    saveTodo: function(){
+                        this.push('todos', this.todo);
+                    }
+                });
+            </script>
+        </dom-module>
+        <my-app></my-app>
+
+        
+            
+    </body>
+</html>

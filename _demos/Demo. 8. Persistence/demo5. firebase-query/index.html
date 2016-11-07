@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="import" href="./bower_components/polymer/polymer.html" />
+<link rel="import" href="./bower_components/polymerfire/polymerfire.html" />
+<link rel="import" href="./bower_components/iron-elements/iron-elements.html" />
+</head>
+<body class="fullbleed flex">
+<dom-module is="my-app">
+<template>
+
+    <firebase-app
+        name="todoapp"
+        api-key="AIzaSyDyzdR_qn6CX1fX0P1155kdR3njcujDgmk"
+        auth-domain="todoapp-7013c.firebaseapp.com"
+        database-url="https://todoapp-7013c.firebaseio.com">
+    </firebase-app>
+
+    <firebase-query
+        id="query"           
+        app-name="todoapp"
+        path="todoapp/todos"
+        data="{{items}}"
+    >
+    </firebase-query>
+
+    <iron-list items="{{items}}">
+        <template><div>{{ item.title}}</div></template>
+    </iron-list>
+</template>
+<script>
+Polymer({
+is:"my-app",
+
+
+});
+</script>
+</dom-module>
+<my-app></my-app>
+</body>
+</html>

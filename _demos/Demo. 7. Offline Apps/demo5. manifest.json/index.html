@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>  
+    <script src="./bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+    <link rel="import" href="./bower_components/platinum-sw/platinum-sw-elements.html">
+    <link rel="manifest" href="./manifest.json">
+</head>
+<body class="fullbleed flex">
+<dom-module is="my-app">
+<template>
+     <platinum-sw-register skip-waiting
+                            auto-register>
+        <platinum-sw-cache></platinum-sw-cache>
+      </platinum-sw-register>
+<h1>hello world</h1>
+</template>
+<script>
+Polymer({
+is:"my-app"
+});
+</script>
+</dom-module>
+<my-app></my-app>
+</body>
+</html>

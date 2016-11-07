@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="./bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+        <link rel="import" href="./bower_components/polymerfire/firebase-app.html">
+       <link rel="import" href="./bower_components/polymerfire/polymerfire.html">
+       <link rel="import" href="./bower_components/app-storage/app-indexeddb-mirror/app-indexeddb-mirror.html">
+       <link rel="import" href="./bower_components/iron-elements/iron-elements.html">
+  
+    </head>
+    <body class="fullbleed flex">
+        <dom-module id="my-app" is="dom-bind">
+            <template>
+                <style>
+                    div { display:inline-block;min-width:400px;padding:50px;margin:10px;box-shadow:5px 5px 5px #cdc;}
+                </style>
+                <div>
+                <template is="dom-if" if="[[areTodos(todos.*)]]">
+                    - nothing todo today -
+                </template>
+                <iron-list items="[[persistedtodos]]">
+                    <template>
+                    <ul><li>[[item.$key]] [[item.title]]</li></ul>
+                    </template>
+                </iron-list>
+                <input type="text" value="{{todo.title::change}}"></input>
+                <button on-tap="saveTodo">Save</button>
+
+                 <firebase-app
+                    name="todoapp"
+                    api-key="AIzaSyDyzdR_qn6CX1fX0P1155kdR3njcujDgmk"
+                    auth-domain="todoapp-7013c.firebaseapp.com"
+                    database-url="https://todoapp-7013c.firebaseio.com">
+                </firebase-app>
+
+                <firebase-document
+                    id="document"
+                    app-name="todoapp"
+                    path="[[editableID]]"
+                    data="{{todo}}">
+                </firebase-document>
+
+                <firebase-query
+                    id="query"
+                    app-name="todoapp"
+                    path="/todoapp/todos"
+                    data="{{todos}}">
+                </firebase-query>
+
+<app-indexeddb-mirror 
+    key="todos"
+    data="{{todos}}"
+    persisted-data="{{persistedtodos}}">
+</app-indexeddb-mirror>
+
+                </div>
+            </template>
+            <script>
+                Polymer({
+                    is:'my-app',
+                    properties:{
+                        session:'john',
+                        editableID:{
+                            computed:'getEditableID(this.todo)',
+                            notify:true
+                        },
+                      todo:{
+                        type:Object,
+                        value:{ }
+                      }
+                    },
+                    getEditableID(todo) {
+                        console.log(`getting editable id ${this.notePath}/${todo.id}`);
+                        return this.notePath + '/' + todo.id;
+                    },
+                    areTodos: function(){
+                        return this.todos.length == 0;
+                    },
+                    saveTodo: function(){
+                       if (this.$.document.isNew && this.todo.title) {      
+                          return this.$.document.save(this.todoPath).then(function() {
+                            this.$.document.reset();
+                            this.todo = { };
+                            this.$.query.refresh();
+                            }.bind(this));
+                       }
+                    },
+                    get todoPath() {
+                        return '/todoapp/todos';
+                    },
+                });
+            </script>
+        </dom-module>
+        <h1>Ajax</h1>
+        <p> This todo list needs its items from the server, go get them!</p>
+        <p> Implement the retrieval and the storage of todos using iron-ajax elements.</p>
+        <my-app></my-app>
+    </body>
+</html>

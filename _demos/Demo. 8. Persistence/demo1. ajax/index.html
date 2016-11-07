@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/polymer/polymer.html" />
+        <link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/app-elements/app-elements.html" />
+        <link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/iron-elements/iron-elements.html" />
+    </head>
+    <body class="fullbleed flex">
+        <dom-module id="my-app" is="dom-bind">
+            <template>
+                <style>
+                    div { display:inline-block;padding:50px;margin:10px;box-shadow:5px 5px 5px #cdc;}
+                </style>
+                <div>
+                <template is="dom-if" if="[[areTodos(todos.*)]]">
+                    - nothing todo today -
+                </template>
+                <iron-list items="[[todos]]" id="list">
+                    <template>
+                    <ul><li>[[item.title]]</li></ul>
+                    </template>
+                </iron-list>
+                <iron-ajax id="getAPI" auto handle-as="json" url="./data/todos" last-response="{{todos}}"></iron-ajax>
+                <iron-ajax id="postAPI" handle-as="json" method="POST" content-type="application/json" body="[[todo]]" 
+                     url="./data/todo"></iron-ajax>
+                <input type="text" value="{{todo.title::change}}"></input>
+                <button on-tap="saveTodo">Save</button>
+                </div>
+            </template>
+            <script>
+                Polymer({
+                    is:'my-app',
+                    properties:{
+                        todo: {
+                            type:Object,
+                            value:{}
+                        }, 
+                        todos:{
+                            type:Array,
+                            value:[]
+                        }
+                    },
+                    areTodos: function(){
+                        return this.todos.length == 0;
+                    },
+                    saveTodo: function(){
+                        this.$.postAPI.generateRequest();
+                        this.$.getAPI.generateRequest();
+                        this.$.list.fire('iron-resize');
+                        this.todo = {};
+                    }
+                });
+            </script>
+        </dom-module>
+        <h1>Ajax</h1>
+        <p> This todo list needs its items from the server, go get them!</p>
+        <p> Implement the retrieval and the storage of todos using iron-ajax elements.</p>
+        <my-app></my-app>
+    </body>
+</html>
