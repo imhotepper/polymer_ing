@@ -3,9 +3,49 @@
 ---
 ### Agenda
 
+* Basic Polymer Application
 * Helper Elements
 * Polymer Element Catalog
 * Customelements.io
+
+### Basics of Polymer
+---
+A Polymer app has
+* Composition of elements
+* Mediator pattern
+* Data binding
+* Event handling
+
+---
+### Composition of elements
+
+Application composition
+<img src="./images/components.png" />
+
+---
+### Mediator pattern
+
+Mediator mediates between the child components
+<img src="./images/mediator.gif" />
+
+---
+### Data binding
+```
+<dom-module id="host-element">
+  <template>
+    <target-element target-property="{{hostProperty}}"></target-element>
+    <target-element target-property="[[hostProperty]]"></target-element>
+  </template>
+</dom-module>
+```
+* Updating data bindings is a property effect.
+
+
+---
+<!-- .slide: data-background="url('images/demo.jpg')" --> 
+<!-- .slide: class="lab" -->
+## Demo time!
+Basic Polymer
 
 ---
 ### Helper Elements
