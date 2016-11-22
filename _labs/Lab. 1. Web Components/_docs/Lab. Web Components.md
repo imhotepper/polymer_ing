@@ -253,12 +253,10 @@ If all went well, your code should look like this:
             </div>
     </template>
     <script>  
-    // Add the template to the document structure -->
-    document.body.appendChild(document.querySelector('link[rel="import"]').import.querySelector("#mytemplate"));
     // Define the custom element
+    var temp = document.currentScript.ownerDocument.querySelector("#mytemplate").content;
     customElements.define('name-badge', class extends HTMLElement {
        connectedCallback() {
-            var temp = document.querySelector("#mytemplate").content;
             var root = this.createShadowRoot();
             root.appendChild(document.importNode(temp, true));
             root.querySelector("#name").innerText = this.contactname;
