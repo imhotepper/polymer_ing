@@ -1,0 +1,40 @@
+<html>
+    <head>
+          <link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/polymer/polymer.html" />       
+    </head>
+    <body>
+        <dom-module id="child-element">
+            <template>  <div style="color:red">{{caption}}</div> </template>
+            <script> Polymer({ is:'child-element' }) </script>
+        </dom-module>
+        <dom-module id="child-element2">
+            <template>  <div style="color:green">{{body}}</div><button on-tap="changeBody">Change</button> </template>
+            <script>
+                Polymer({
+                    is:'child-element2',
+                    properties:{  body:{ type:String, notify:true }  },
+                    changeBody: function(){  this.body = 'changed!';  }
+                })
+            </script>
+        </dom-module>
+
+        <dom-module id="my-app">
+            <template>
+                <h1>[[message]]</h1>
+                <child-element caption="[[title]]"></child-element>
+                <child-element2 body="{{title}}" on-body-changed="logChange"></child-element2>
+            </template>
+            <script>
+                Polymer({
+                    is:'my-app',
+                    properties:{
+                        message:{ type:String,  value:'Hello Polymer, I am the mediator!' },
+                         title:{ type:String,  value:'Mediated!' }
+                    },
+                    logChange: function(){  console.log('changed!!!');  }
+                })
+            </script>
+        </dom-module>
+        <my-app></my-app>
+    </body>
+</html>
