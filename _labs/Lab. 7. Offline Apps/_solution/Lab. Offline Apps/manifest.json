@@ -1,0 +1,22 @@
+{
+    "short_name": "Voting",
+    "name": "Who's the next President",
+    "description": "Select your next president",
+    "icons": [
+        {
+            "src": "launcher-icon.png",
+            "sizes": "48x48",
+            "type": "image/png"
+        },
+        {
+            "src": "launcher-icon-144.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "/",
+    "display": "fullscreen",
+    "orientation": "portrait",
+    "theme_color": "#29BDBB",
+    "background_color": "#29BDBB"
+}

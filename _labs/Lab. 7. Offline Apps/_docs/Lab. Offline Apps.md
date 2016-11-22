@@ -17,19 +17,31 @@ importScripts('bower_components/platinum-sw/service-worker.js');
 
 Save the file.
 
-Add the platinum-elements html import to the page and add the following content to the template
+Add the platinum-elements html import to the page and add the following content to the index.html inside the template.
 ```
 <platinum-sw-register skip-waiting  clients-claim reload-on-install auto-register>
     <platinum-sw-cache default-cache-strategy="networkFirst"></platinum-sw-cache>
 </platinum-sw-register>
 ```
 
-Save all files and run lite-server to run the application. Use the app, navigate through the pages and
-then stop the server (ctrl+c). Refresh the application, is everything still working? Cool our app
+Dont forget to install the platinum elements and 
+add the necessary includes in the header of the page
+```
+$ bower install platinum-elements
+```
+
+```
+<link rel="import" href="/bower_components/platinum-sw/platinum-sw-elements.html"/>
+```
+
+Save all files and run lite-server to run the application. 
+Use the developer tools (Application tab) to inspect the service workers and check to see if the service worker is up and running.
+Also check the Cache Storage to see the files cached by the service worker.
+
+
+Use the app, navigate through the pages andthen stop the server (ctrl+c). Refresh the application, is everything still working? Cool our app
 works offline.
 
-Inspect the Application Tab in the developer tools and navigate to the Cache Storage in the left panel. 
-Inspect the cache to see all resources are in cache.
 
 ### Step 3. Add Manifest.json to the application
 Add a new file to the root of the application and name it 'manifest.json'. Give the file the following contents
@@ -50,7 +62,7 @@ Add a new file to the root of the application and name it 'manifest.json'. Give 
             "type": "image/png"
         }
     ],
-    "start_url": "./index.html",
+    "start_url": "/",
     "display": "fullscreen",
     "orientation": "portrait",
     "theme_color": "#29BDBB",
@@ -80,15 +92,11 @@ Click on the Manifest icon in the Application Tab and select the link on the rig
 
 Did it work?
 
-
-
-
-
-Save the files and test your solution. Make sure that you have an eye on the terminal to see the details-page gets 
-loaded only the first time when we switch pages! We've lazyloaded our application partly.
+Start the application from the shortcut that just got added to the homescreen and inspect to see that everything is working correctly.
 
 ### Summary
-We've implemented routing and lazy loading. But there is still work left to do. Let's make our app offline capable.
+We've made an offline application with a homescreen shortcut. Lets use a database to store our data next.
+
 
 -= End of lab =-
   

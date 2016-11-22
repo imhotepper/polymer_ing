@@ -7,23 +7,11 @@
         <link rel="import" href="/bower_components/neon-animation/neon-animation.html"/>
         <link rel="import" href="/bower_components/neon-animation/neon-animated-pages.html"/>
         <link rel="import" href="/bower_components/platinum-sw/platinum-sw-elements.html"/>
-        
+        <link rel="manifest" href="./manifest.json">
     </head>
     <body class="fullbleed layout vertical">
-         
-
         <dom-module is="dom-bind" id="my-app">
-            <template> 
-                
-                 <platinum-sw-register skip-waiting
-                            clients-claim
-                            reload-on-install
-                            auto-register>
-                    <platinum-sw-cache default-cache-strategy="networkFirst"
-                                  ></platinum-sw-cache>
-                </platinum-sw-register>
-
-
+            <template>
                 <app-location route="{{route}}"></app-location>
                 <app-route id="router" pattern="/:view" route="{{route}}" data="{{routeData}}" tail="{{routeTail}}"></app-route>
                
@@ -34,17 +22,26 @@
                          <details-page route="{{routeTail}}" name="details" selected-candidate="{{selectedCandidate}}" candidates="[[candidates]]" votes="[[votes]]" on-goback="goBack">Loading details...</details-page>
                     </neon-animated-pages>
                 </paper-header-panel>
+
+                <platinum-sw-register skip-waiting  clients-claim reload-on-install auto-register>
+                    <platinum-sw-cache default-cache-strategy="networkFirst"></platinum-sw-cache>
+                </platinum-sw-register>
+
             </template>
              <script>
                     Polymer({
                         is:'my-app',
                         properties:{
+                            view:{
+                                type:String, 
+                                value:'vote'
+                            }
                         },
                         observers: ['_routeChanged(routeData.view)'],
                         _routeChanged: function(view){
                             // lazyload the page
-                            if (view == "") this.set('route.path',"/vote");
-                            else this.importHref(this.resolveUrl('/' + view +'-page.html'))
+                            if (view === undefined || view == "") this.set('route.path',"/vote");
+                            this.importHref(this.resolveUrl('/' + view +'-page.html'))
                         },
                         goBack: function(){
                             this.set('route.path',"/vote");

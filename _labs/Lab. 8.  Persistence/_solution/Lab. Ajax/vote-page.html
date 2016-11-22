@@ -1,0 +1,58 @@
+<dom-module id="vote-page">
+    <template>
+        <div name="vote"><strong>Candidates:</strong>
+            <iron-list grid items="[[candidates]]" id="candidateGrid">
+                <template>
+                <paper-card heading="Vote for" style="margin-top:2px;zoom:96%;width:45%;">
+                        <div class="card-content">  [[item.name]] [[item.lastname]] </div>
+                        <div class="card-actions">
+                            <paper-icon-button on-tap="showInfo" icon="info-outline"></paper-icon-button>
+                            <paper-fab id on-tap="vote" mini icon="star" style="float:right;margin-bottom:5px;"></paper-fab>
+                        </div>
+                    </paper-card>
+                </template>
+            </iron-list>
+            <div><strong>Votes:</strong>
+                <template is="dom-repeat" items="[[votes]]" sort="_getSort" observe="time">
+                    <div>[[item.time]] -> [[item.candidate.name]]</div>
+                </template>
+            </div>
+            <div><strong>Result:</strong>
+                <template is="dom-if" if="[[winner]]"> <div>The next president: {{ winner }}</div> </template>
+            </div>
+        </div>
+    </template>
+    <script>
+       Polymer({
+            is:'vote-page',
+            properties:{
+                votes: { type:Array},
+                winner:{ type:String },
+                animationConfig: {
+                    value: function() {
+                        return {
+                            'vote':[ { name: 'scale-down-animation', node: this.$.candidateGrid}]
+                }}}
+            },
+            behaviors: [ Polymer.NeonAnimationRunnerBehavior ],
+            _getSort: function(a, b){  return b.created - a.created;  },
+            getWinner: function(){
+                            var filtered = this.votes.filter(function(item){
+                                return item.candidate === this.candidates[0];
+                            }.bind(this));
+                            if (filtered.length == this.votes.length/2) return 'not defined, we need one more vote';
+                            if (filtered.length < this.votes.length/2)  return this.candidates[1].name;
+                            return this.candidates[0].name;
+            },
+            vote: function(){
+                if (this.votes.length > 10) this.winner = this.getWinner();
+                this.fire('vote', new Vote(event.model.item, new Date().toLocaleTimeString()));
+                this.playAnimation('vote');
+            },
+            showInfo: function(){
+                this.fire('show-info', event.model.item);
+                this.playAnimation('vote');
+            }
+        });
+    </script>
+</dom-module>

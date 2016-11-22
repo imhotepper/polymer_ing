@@ -1,0 +1,38 @@
+<dom-module id="details-page">
+    <template>
+        <app-route id="router" pattern="/:id" route="{{route}}" data="{{routeData}}" tail="{{routeTail}}"></app-route>
+        <div name="details">
+            <paper-card>
+                <div class="card-content">
+                <div class="header">[[selectedCandidate.name]] [[selectedCandidate.lastname]] </div>
+                <p>Biography for....</p>
+                </div>
+                <div class="card-actions">
+                <p>Current votecount: {{_voteCount(selectedCandidate, votes.*)}} </p>
+                <paper-button on-tap="_goBack">Back</paper-button>
+                </div>
+            </paper-card>
+        </div>
+    </template>
+    <script>
+        Polymer({
+            is:'details-page',
+            properties:{
+                selectedCand1idate:{ type:Object,   notify:true }
+            },
+            observers: ['_viewChanged(routeData.id)'],
+            _viewChanged: function(view) {
+                setTimeout(function(){
+                    if (this.routeData.id)
+                        this.selectedCandidate = this.candidates[parseInt(this.routeData.id)];
+                }.bind(this), 50);
+            },
+            _voteCount: function(candidate, votes){
+                return  this.votes.filter(function(item){  return  item.candidate == candidate;  }).length;
+            },
+             _goBack: function(){
+                 this.fire('goback');
+            }
+        });
+    </script>
+</dom-module>
