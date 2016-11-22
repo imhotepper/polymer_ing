@@ -26,7 +26,7 @@ If the votes are not persisted, and they probably aren't, try to check if there 
 initializes the votes array upon page load. Comment out this line of code.
 
 Save all files and try again. Are the votes persisted?
-
+ 
 Open the chrome-devtools by right clicking on the page and navigate to the application tab. 
 In the left pane, open the localstorage container and open the localstorage for the webapplication. 
 
