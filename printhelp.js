@@ -1,5 +1,6 @@
-console.log('\033c');
-console.log("Training reactjs");
+var CLEARSCREEN = '\033c';
+console.log(CLEARSCREEN); // clear screen
+console.log("Training Polymer!");
 console.log("Info Support BV");
 console.log(" - \"npm start\" -or- \"npm run presentation\" to start presentation");
 console.log(" - \"npm run generatelabs\" to generate pdf files for the labs");
