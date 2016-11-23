@@ -7,7 +7,7 @@
         <link rel="import" href="/bower_components/neon-animation/neon-animation.html"/>
         <link rel="import" href="/bower_components/neon-animation/neon-animated-pages.html"/>
         <link rel="import" href="/bower_components/platinum-sw/platinum-sw-elements.html"/>
-        <link rel="manifest" href="./manifest.json">
+        <link rel="manifest" href="/manifest.json">
     </head>
     <body class="fullbleed layout vertical">
         <dom-module is="dom-bind" id="my-app">
@@ -23,20 +23,30 @@
                     </neon-animated-pages>
                 </paper-header-panel>
 
-                <platinum-sw-register skip-waiting  clients-claim reload-on-install auto-register>
-                    <platinum-sw-cache default-cache-strategy="networkFirst"></platinum-sw-cache>
-                </platinum-sw-register>
 
-                <iron-localstorage name="votes" value="{{votes}}" on-iron-localstorage-load-empty="initializeVotes"></iron-localstorage>
+                <iron-ajax id="getVotes" auto url="/data/votes" handle-as="json" last-response="{{votes}}"></iron-ajax>
+                <iron-ajax id="postVote" url="/data/vote" method="POST"  content-type="application/json" body="[[currentvote]]"></iron-ajax>
 
             </template>
              <script>
+                    var Candidate = function(name, lastname){
+                        this.name = name;
+                        this.lastname = lastname;  }
+                    var Vote = function(candidate, time){
+                        this.candidate = candidate;
+                        this.created = Date.now();
+                        this.time = time; }
+
                     Polymer({
                         is:'my-app',
                         properties:{
                             view:{
                                 type:String, 
                                 value:'vote'
+                            },
+                            candidates:{
+                                Type:Array,
+                                value:[ new Candidate('Donald', 'Dump'), new Candidate('Hilary', 'Reagan') ]
                             }
                         },
                         observers: ['_routeChanged(routeData.view)'],
@@ -55,7 +65,10 @@
                             this.set('route.path',"/details/" + this.candidates.indexOf(item.detail));
                         },
                         vote: function(e){
-                            this.push('votes', e.detail);
+                            this.currentvote = e.detail;
+                            this.$.postVote.generateRequest();
+                            this.$.getVotes.generateRequest();
+                            // this.push('votes', e.detail);
                         }
                     });
             </script>
@@ -64,19 +77,7 @@
         <my-app></my-app>
 
         <script>
-            var Candidate = function(name, lastname){
-                this.name = name;
-                this.lastname = lastname;  }
-            var Vote = function(candidate, time){
-                this.candidate = candidate;
-                this.created = Date.now();
-                this.time = time; }
             document.querySelector("my-app").message = "Election Day!";
-            document.querySelector("my-app").candidates = [
-                new Candidate('Donald', 'Dump'),
-                new Candidate('Hilary', 'Reagan') ];
-            //document.querySelector("my-app").votes = [];
         </script>
-
     </body>
 </html>

@@ -1,8 +1,9 @@
 <dom-module id="vote-page">
     <template>
-        <div name="vote"><strong>Candidates:</strong>
+        <div name="vote"><strong>
             <iron-list grid items="[[candidates]]" id="candidateGrid">
                 <template>
+                    
                 <paper-card heading="Vote for" style="margin-top:2px;zoom:96%;width:45%;">
                         <div class="card-content">  [[item.name]] [[item.lastname]] </div>
                         <div class="card-actions">
@@ -37,21 +38,28 @@
             behaviors: [ Polymer.NeonAnimationRunnerBehavior ],
             _getSort: function(a, b){  return b.created - a.created;  },
             getWinner: function(){
+                if (this.votes && this.votes.length > 10){
                             var filtered = this.votes.filter(function(item){
-                                return item.candidate === this.candidates[0];
+                                return item.candidate.name === this.candidates[0].name;
                             }.bind(this));
                             if (filtered.length == this.votes.length/2) return 'not defined, we need one more vote';
                             if (filtered.length < this.votes.length/2)  return this.candidates[1].name;
                             return this.candidates[0].name;
+                } 
+                return "";
             },
             vote: function(){
-                if (this.votes.length > 10) this.winner = this.getWinner();
+                this.winner = this.getWinner();
                 this.fire('vote', new Vote(event.model.item, new Date().toLocaleTimeString()));
                 this.playAnimation('vote');
             },
             showInfo: function(){
                 this.fire('show-info', event.model.item);
                 this.playAnimation('vote');
+            },
+            ready: function(){
+                this.winner = this.getWinner();
+                this.$.candidateGrid.fire('iron-resize');
             }
         });
     </script>

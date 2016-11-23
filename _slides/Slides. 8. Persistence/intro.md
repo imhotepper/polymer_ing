@@ -21,8 +21,8 @@
 Example
 ```
 <paper-input value="{{idee}}"></paper-input>
-<app-localstorage-document key="idee" data="{{idee}}">
-</app-localstorage-document>
+<iron-localstorage name="idee" data="{{idee}}">
+</iron-localstorage>
 ```
 
 ---
@@ -74,6 +74,7 @@ Make AJAX calls through an element, example:
     auto
     method="POST|GET"
     url="https://www.googleapis.com/youtube/v3/search"
+    content-type="application/json"
     params='{"part":"snippet", "q":"polymer", "key": "YOUTUBE_API_KEY", "type": "video"}'
     handle-as="json"
     on-response="handleResponse"
@@ -129,6 +130,3 @@ PolymerFire
 
 url: https://github.com/firebase/polymerfire
 
----
-### Hybrid Storage
-Sometimes one techni
