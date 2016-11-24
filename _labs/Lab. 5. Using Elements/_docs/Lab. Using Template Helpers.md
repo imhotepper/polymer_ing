@@ -7,7 +7,7 @@ president. This case is used throughout the rest of the course. Each lab builds 
 Create a directory 'polymer_labs' and navigate into it.
 Install NodeJS from it's website and use npm to install lite-server globally
 ```
-$ sudo npm install lite-server -g
+$ npm install lite-server -g
 ```
 
 Create a file 'index.html' inside your current folder and write a html page like this:
