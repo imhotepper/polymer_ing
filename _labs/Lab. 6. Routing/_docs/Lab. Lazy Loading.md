@@ -197,10 +197,10 @@ index.html
 </html>
 ```
 
-Try to undestand the individual files. Note that there are no imports defined to the vote-page and the detail-page.
+Try to understand the individual files. Note that there are no imports defined to the vote-page and the detail-page.
 Save all files and test to see id it works as expected. You should see a placeholder text saying that the element is loading. 
 
-### Step 3. Use observers to laze load the elements
+### Step 3. Use observers to lazy load the elements
 When the route changes, we want to load elements for the page. We use an observer to monitor route changes. When the route changes
 we load the respective page.  Implement the following logic into the index.html
 ```
