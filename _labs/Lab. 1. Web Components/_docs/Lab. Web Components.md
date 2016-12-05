@@ -12,7 +12,7 @@ $ sudo npm install lite-server -g
 Create a file 'index.html' inside your current folder and write a html page
 that uses a name badge like this:
 
-```
+```html
 <html>
   ...
   <name-badge></name-badge>
@@ -29,7 +29,7 @@ just add dummy content into the innerHTML property for the custom element. We wi
 
 Hint: Use customElements.define('name-badge', class extends HTMLElement {}); to define the new element.
 
-Give the new element some style, markup and fake data.. 
+Give the new element some style, markup and fake data. 
 If you are not of the creative type, copy and paste the following script into your HTML file:
 
 ```js
@@ -55,14 +55,14 @@ customElements.define('name-badge', class extends HTMLElement {
 The badge is kind of uncustomizable. Let's change that... Open the 'index.html' into your favorite 
 editor and change the declaration into:
 
-```
+```html
 <name-badge contactname="Another User"></name-badge>
 ```
 
 Try to write the code to reflect this attribute into the content. 
 
 Your code should look similar to the following:
-```
+```js
 customElements.define('name-badge', class extends HTMLElement {
         constructor() {
             super(); 
@@ -105,15 +105,15 @@ All the markup for our namebadge is inside a string. This is not best practice a
 templates to make the component more maintainable and better structured. 
 
 Take all the markup from the namebadge and stuff it into a template tag. Give the template an id for later use:
-```
-  <template id="#mytemplate">
+```html
+  <template id="mytemplate">
   ... markup here ...
   </template>
 ```
 
 Change the code in the constructor to use the template upon constructing the element. The following code demonstrates the loading and insertion of the template:
 
-```
+```js
 var temp = document.querySelector("#template").content;
 document.appendChild(document.importNode(temp, true));
 ```
@@ -121,7 +121,7 @@ document.appendChild(document.importNode(temp, true));
 Test to see if all works as expected!
 
 Your complete HTML page should look something like this:
-```
+```html
 <!DOCTYPE html>
 <html>
     <head>
@@ -168,13 +168,13 @@ Your complete HTML page should look something like this:
 Open the HTML page and add the following HTML into the body of the page, 
 just below the opening body tag:
 
-```
+```html
 <div><h1>Polymer Trainer List</h1></div>
 <hr/>
 ```
 
 Change the style inside the template for the name badge and add the following style-rule:
-```
+```css
     div { font-family:arial;color:gray;}
 ```
 
@@ -187,7 +187,7 @@ Change the script where the template is instantiated to create a shadowDomRoot. 
 the template to this shadowDomRoot.
 
 Your code should look something like:
-```
+```js
     customElements.define('name-badge', class extends HTMLElement {
         constructor() {
             super(); 
@@ -220,25 +220,25 @@ Create a new file inside the same directory. Name the file 'name-badge.html'. Co
 code and markup related to this element into the newly created file. 
 
 Open the index.html and use the following include link 
-```
+```html
   <link  rel="import" href="name-badge.html"/>
 ```
 to include the namebadge into your page.
 
 Open the name-badge.html file and change the code in the script to:
 - Get the the template from the import and add it to the body of the document
-```
+```js
 // first script to execute.. add the template to the document structure -->
 document.body.appendChild(document.querySelector('link[rel="import"]').import.querySelector("#mytemplate"));
 ```
 - Define the custom tag and use the template from the import to stamp out a new DOM into the Shadow DOM.
-```
+```js
 // inside the definition, grab the template from the body..
 var temp = document.querySelector("#mytemplate").content;
  ```
 
 If all went well, your code should look like this:
-```
+```html
     <template id="mytemplate">
          <style>
               div { font-family:arial;color:gray;}
@@ -295,7 +295,7 @@ The name is an attribute but the details of our name-badge is still hard-coded. 
 name-badge by allowing inner tags to the name-badge for the details pane.
 
 For example:
-```
+```html
 <name-badge><section details>CEO Apple</section></name-badge>
 ```
 should work 
