@@ -1,0 +1,8 @@
+{
+  "en": {
+    "hello": "Translation and localization {name}"
+  },
+  "fr": {
+    "hello": "Traduction et localisation {name}"
+  }
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="import" href="./bower_components/polymer/polymer.html" />
+    <link rel="import" href="./bower_components/app-elements/app-elements.html" />
+</head>
+
+<body class="fullbleed flex">
+    <dom-module is="my-app">
+         <template>
+             <div>{{localize('hello', 'name', 'Batman')}}</div>
+        </template>
+        <script>
+            Polymer({
+                is:"my-app",
+                behaviors:[Polymer.AppLocalizeBehavior],
+                properties: {
+                  language: {
+                    value: 'fr'
+                  },
+                  resources: {
+                        value: function() {
+                            return {
+                                'en': { 'hello': 'My name is {name}.' },
+                                'fr': { 'hello': 'Je m\'apelle {name}.' }
+                            }
+                        }
+                  }
+                }
+            });
+        </script>
+    </dom-module>
+    <my-app></my-app>
+</body>
+
+</html>

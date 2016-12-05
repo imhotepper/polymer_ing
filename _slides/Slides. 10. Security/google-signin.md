@@ -39,6 +39,19 @@ On behalf of users
 <google-signin client-id="..." scopes="https://www.googleapis.com/auth/drive"></google-signin>
 ```
 
+### Google Signin Authorisation
+In the code 
+* bind a property to the state
+'''
+<google-signin client-id="..." is-authorized="{{isSignedIn}}" ... />
+'''
+* use the property to handle authorization
+'''
+if (this.isSignedIn)
+'''
+
+!!! Remember to authorise in the backend, this is not secure !!!
+
 ---
 <!-- .slide: data-background="url('images/demo.jpg')" --> 
 <!-- .slide: class="lab" -->

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="import" href="./bower_components/polymer/polymer.html" />
+<link rel="import" href="./bower_components/google-web-components/google-web-components.html" />
+</head>
+<body class="fullbleed flex">
+<dom-module is="my-app">
+<template>
+    <google-signin id="login" on-google-signed-out="signout" is-authorized="{{isSignedIn}}" on-google-signin-success="getUser" label-signin="Sign-in" client-id="814314004693-6qcpe8m248sn9knm1mp97nkb7h7acfgp.apps.googleusercontent.com" scopes="https://www.googleapis.com/auth/drive"></google-signin>
+    hello {{ userName }}
+
+    <div hidden$="{{!isSignedIn}}">Your content here</div>
+</template>
+<script>
+Polymer({
+    is:"my-app",
+    properties:{
+        username:{
+            type:String
+        }
+    },
+    signout:function(){
+       // this.$.login.signOut();
+        this.userName = "";
+    },
+    getUser: function(){
+        this.userName = gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile().getName();
+    }
+});
+</script>
+</dom-module>
+<my-app></my-app>
+</body>
+</html>

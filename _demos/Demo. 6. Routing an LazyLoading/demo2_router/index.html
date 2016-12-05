@@ -25,8 +25,8 @@
                  </div>
                 
                 <hr/>
-                 <iron-pages selected="[[routeData.view]]" attr-for-selected="name">
-                     <section name="home">Homepage</section>
+                 <iron-pages id="pg" selected="{{routeData.view}}" attr-for-selected="name">
+                     <section name="home">Homepage <button on-tap="nextPage">click me</button></section>
                      <section name="profile">Profile page</section>
                      <section name="messages">Messages page</section>
                  </iron-pages>
@@ -37,6 +37,9 @@
                    is:'my-app',
                    _getPattern: function() {
                       return this.$.router.pattern;
+                   },
+                   nextPage: function(){
+                      this.$.pg.selectNext();
                    },
                    _getTail: function() {
                       return JSON.stringify(this.routeTail);

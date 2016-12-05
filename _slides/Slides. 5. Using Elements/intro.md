@@ -8,8 +8,8 @@
 * Polymer Element Catalog
 * Customelements.io
 
-### Basics of Polymer
 ---
+### Basics of Polymer
 A Polymer app has
 * Composition of elements
 * Mediator pattern
@@ -285,25 +285,6 @@ Below is an example of an event
 
 The eventhandlers are functions you have to provide, just like regular DOM
 
----
-### Using inline modules
-Polymer provides <code>dom-module</code> to provide for document level 
-elements. 
-It is usefull to wrap the elements in a dom-module for
-* databinding support
-* theming support
-* scoping
-
----
-### Using inline modules
-To declare an inline dom-module, you write
-```
-<dom-module id='my-app'>
-<style>... your styles here ...</style>
-<template>... your markup here ...</template>
-<script>... your script here ...</script>
-</dom-module>
-```
 
 ---
 <!-- .slide: data-background="url('images/demo.jpg')" --> 
