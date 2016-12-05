@@ -20,12 +20,17 @@
                 constructor() {
                     // /<style>h1 { color:red}</style>
                     super();
-                    this.innerHTML = '<h1>content</h1>content goes here...';
+                   
                     this.addEventListener('click', e => {
                       console.log('clicked me!');
                       this.open = !this.open;
                     });
                 }
+                
+                connectedCallback() {
+                    this.innerHTML = '<h1>content</h1>content goes here...';
+                } 
+                
            })
         </script>
         <john-element></john-element>        
