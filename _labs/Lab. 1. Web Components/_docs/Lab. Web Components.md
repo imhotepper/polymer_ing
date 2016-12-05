@@ -22,8 +22,7 @@ that uses a name badge like this:
 Run the page inside Chrome. What is the output? How does Chrome handle the unknown tag?
 
 ### Step 2. Registering the custom element
-Open the index.html and import the polyfill for custom elements. This polyfill is provided in the
-starter files inside the '_labs/Lab. Web Components' folder.
+Open the index.html and import the polyfill for custom elements. This polyfill is provided in the '_labs/Lab. 1. Web Components/_starterfiles' folder.
 
 Write script in the page to register and create an instance of the name-badge element. For now,
 just add dummy content into the innerHTML property for the custom element. We will get back to this later.
