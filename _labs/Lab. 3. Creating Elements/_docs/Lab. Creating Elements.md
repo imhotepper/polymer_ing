@@ -15,7 +15,7 @@ Create the following file and directory structure:
 Give the index.html appropriate content. Make sure to refer to the
 Polymer html include inside the head section of your HTML page.
 
-Include the 'products\product-details.html' in the head of your index.html
+Include the 'products\product-detail.html' in the head of your index.html
 
 Define an element that displays a product's title, price, stock and details. Define these
 as properties on your element. 
@@ -69,7 +69,7 @@ lite-server
 Make sure you see the component alive in the browser
 
 ### Step 2. Add a computed property
-Open the file 'product/product-details.html' and add the following button 
+Open the file 'product/product-detail.html' and add the following button 
 to the template 
 ```
  <button  disabled$="{{isOutOfStock}}">Buy this product</button>
@@ -96,8 +96,8 @@ $0.stock = 10
 ```
 Is the button enabled again?
 
-### Step 3. Add Methods to the product-details component
-Open the file 'product/product-details.html' and add two methods to 
+### Step 3. Add Methods to the product-detail component
+Open the file 'product/product-detail.html' and add two methods to 
 the component:
 - add a method to buy the product. This method should 
 decrement the stock value. 
@@ -121,8 +121,8 @@ addStock: function(value){
 Test the component in the browser. Buy products and check if the button is disabled 
 when the stock runs out.
 
-### Step 4. Add events to the product-details component
-Open the file 'product/product-details.html' and add two events to the product-detail
+### Step 4. Add events to the product-detail component
+Open the file 'product/product-detail.html' and add two events to the product-detail
 component:
 - Add an event that gets fired when the item is bought.
 Name this event `bought`.
