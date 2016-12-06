@@ -9,7 +9,7 @@ Install NodeJS from it's website and use npm to install lite-server globally
 $ sudo npm install lite-server -g
 ```
 Create the following file and directory structure:
-- product\product-details.html
+- product\product-detail.html
 - index.html
 
 Give the index.html appropriate content. Make sure to refer to the
