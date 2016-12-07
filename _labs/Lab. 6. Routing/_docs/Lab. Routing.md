@@ -8,7 +8,7 @@ Open file 'index.html' inside your current folder. If the exercise was not succe
 lab, you can copy and paste a version from the _solution folder from the last exercise, this
 can be found in './Lab. 5. Using Elements/_solution/Lab. Using Animated Pages/index.html'.
 
-Make sure that the current setup works. Ask the instructor for help if you not have a valid setup.
+Make sure that the current setup works. Ask the instructor for help if you do not have a valid setup.
 
 ### Step 2. Install app-elements
 Use the commandline in the current directory to install the app-elements with the following command 
@@ -72,7 +72,7 @@ should reflect an id placeholder. Place the following code beneath the first rou
 We now can handle both the /vote and the /details/1 urls and get the respective values from the properties.
 
 Add the code for the detailspage so the id of the routeChildData is used to display the appropriate candidate
-> http://localhost:3000/details/1 should display details aboud Hilary
+> http://localhost:3000/details/1 should display details about Hillary
 
 To implement this, we need to observe the routeChildData.id, each time this value changes, we need to set the this.selectedCandidate
 The code to implement this is placed inside the application, after the properties and should look like

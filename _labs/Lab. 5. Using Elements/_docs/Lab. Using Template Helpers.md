@@ -77,7 +77,7 @@ to the snippet below:
     document.querySelector("my-app").message = "Election Day!";
     document.querySelector("my-app").candidates = [
         new Candidate('Donald', 'Dump'),
-        new Candidate('Hilary', 'Clint') ];
+        new Candidate('Hillary', 'Clint') ];
     document.querySelector("my-app").votes = [];
 </script>
 ```
