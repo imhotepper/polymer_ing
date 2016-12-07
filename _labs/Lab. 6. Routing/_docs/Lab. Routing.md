@@ -72,7 +72,7 @@ should reflect an id placeholder. Place the following code beneath the first rou
 We now can handle both the /vote and the /details/1 urls and get the respective values from the properties.
 
 Add the code for the detailspage so the id of the routeChildData is used to display the appropriate candidate
-> http://localhost:3000/details/1 should display details aboud Hilary
+> http://localhost:3000/details/1 should display details about Hillary
 
 To implement this, we need to observe the routeChildData.id, each time this value changes, we need to set the this.selectedCandidate
 The code to implement this is placed inside the application, after the properties and should look like
