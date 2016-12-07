@@ -7,7 +7,7 @@ Open file 'index.html' inside your current folder. If the exercise was not succe
 lab, you can copy and paste a version from the _solution folder from the last exercise, this
 can be found in './Lab. 6. Routing/_solution/Lab. Routing/index.html'.
 
-Make sure that the current setup works. Ask the instructor for help if you not have a valid setup.
+Make sure that the current setup works. Ask the instructor for help if you do not have a valid setup.
 
 ### Step 2. Refactor the pages into elements
 Add two files to your current directory. Name them 'vote-page' and 'details-page' respectively.
@@ -198,7 +198,7 @@ index.html
 ```
 
 Try to understand the individual files. Note that there are no imports defined to the vote-page and the detail-page.
-Save all files and test to see id it works as expected. You should see a placeholder text saying that the element is loading. 
+Save all files and test to see if it works as expected. You should see a placeholder text saying that the element is loading. 
 
 ### Step 3. Use observers to lazy load the elements
 When the route changes, we want to load elements for the page. We use an observer to monitor route changes. When the route changes

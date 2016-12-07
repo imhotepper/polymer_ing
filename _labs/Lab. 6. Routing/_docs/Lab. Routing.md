@@ -8,7 +8,7 @@ Open file 'index.html' inside your current folder. If the exercise was not succe
 lab, you can copy and paste a version from the _solution folder from the last exercise, this
 can be found in './Lab. 5. Using Elements/_solution/Lab. Using Animated Pages/index.html'.
 
-Make sure that the current setup works. Ask the instructor for help if you not have a valid setup.
+Make sure that the current setup works. Ask the instructor for help if you do not have a valid setup.
 
 ### Step 2. Install app-elements
 Use the commandline in the current directory to install the app-elements with the following command 

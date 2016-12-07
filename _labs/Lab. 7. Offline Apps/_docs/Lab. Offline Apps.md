@@ -7,7 +7,7 @@ Open file 'index.html' inside your current folder. If the exercise was not succe
 lab, you can copy and paste a version of the files from the _solution folder from the last 
 exercise, these files can be found in './Lab. 6. Routing/_solution/Lab. Lazy Loading/'.
 
-Make sure that the current setup works. Ask the instructor for help if you not have a valid setup.
+Make sure that the current setup works. Ask the instructor for help if you do not have a valid setup.
 
 ### Step 2. Add platinum elements
 Include a file in the root of the site with the name sw-import.js, and give it the following contents:
