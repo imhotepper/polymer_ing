@@ -41,7 +41,7 @@ highligh attribute. Also check if the class is applied accordingly.
 
 
 ### Step 2. Add styles to the product-details
-Open the file 'product/product-details.html' and add styles to this element. 
+Open the file 'product/product-detail.html' and add styles to this element. 
 Give the product-details a red background when the .highlighted class is set.
 
 Save all the files.
