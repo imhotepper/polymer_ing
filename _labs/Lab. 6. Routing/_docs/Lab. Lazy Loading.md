@@ -189,7 +189,7 @@ index.html
             document.querySelector("my-app").message = "Election Day!";
             document.querySelector("my-app").candidates = [
                 new Candidate('Donald', 'Dump'),
-                new Candidate('Hilary', 'Reagan') ];
+                new Candidate('Hillary', 'Reagan') ];
             document.querySelector("my-app").votes = [];
         </script>
 
