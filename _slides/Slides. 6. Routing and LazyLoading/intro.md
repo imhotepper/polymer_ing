@@ -4,7 +4,7 @@
 ### Agenda
 * Routing and Location
 * Lazy Loading
-* Lazy Rouing
+* Lazy Routing
 
 ---
 ### Routing  
@@ -48,8 +48,8 @@ Routing Location Element
 
 ---
 ### App-Route
-App Route takes and dissectes a route object
-* can be used fot 2 way binding
+App Route takes and dissects a route object
+* can be used for 2 way binding
 * Route object contains
     * Prefix
     * path
