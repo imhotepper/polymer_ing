@@ -7,9 +7,10 @@ From the site:
 > unlocking the full potential of the web platform.
 
 Use the Polymer library to 
-* make the most of Web Components, a powerful new platform feature for extending HTML and componentizing your apps.
+* make the most of Web Components
+
 Use the Polymer App Toolbox to
-* build cutting-edge Progressive Web Apps that load quickly, respond instantly and work from anywhere.
+* build cutting-edge Progressive Web Apps 
 
 ---
 ### What is Polymer

@@ -1,0 +1,21 @@
+<dom-module id="todo-list">
+    <template>
+        <style>
+        .done { text-decoration: line-through}
+        </style>
+        <template id="list" is="dom-repeat" items="[[todos]]">
+           <div class$="{{isDone(item.done)}}" on-tap="select"> {{ item.title}} </div>
+        </template>
+    </template>
+    <script>
+        Polymer({
+            is:'todo-list',
+            isDone:function(i){
+                return i ? "done" : "";
+            },
+            select: function(e){
+                this.fire('selected-item', {item:e.model.item});
+            }
+        })
+    </script>
+</dom-module>

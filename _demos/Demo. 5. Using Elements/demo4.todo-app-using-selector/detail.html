@@ -1,0 +1,23 @@
+<dom-module id="todo-detail">
+
+<template>
+    <div style="border:1px solid black;">
+    {{ title }} {{ description }} 
+    <button on-tap="setDone">Done</button>
+    </div>
+</template>
+<script>
+    Polymer({
+        is:'todo-detail',
+        properties:{
+            title:{ Type:String, notify:true},
+            description:{ Type:String, notify:true},
+            done:{ Type:Boolean, notify:true},
+        },
+        setDone: function(){
+            this.set('done', true); 
+        }
+    })
+</script>
+</dom-module>
+

@@ -105,27 +105,19 @@ the following template
 ## Demo time!
 Demo 1. Hello world element
 
+
 ---
-### Declarative part
-* The 'dom-module' tag wraps the local DOM definition. 
-* The id attribute shows that this module is called icon-toggle.
-* The 'template' defines the local DOM structure and styling. 
-* The 'style' element define styles scoped to the local DOM.
-* The :host pseudo-class matches the element defined.
-
-
-What is the local DOM?
----
-### Local DOM
-
+### Polymer and Local DOM
+Remeber the Shadow DOM?
+Polymer defines
 * Local DOM
     - DOM thats independent from the 'normal' DOM
     - Implemented as Shadow DOM
-    - Implemented as Shady DOM (custom implementation)
+    - Implemented as Shady DOM (custom)
 * Light DOM
     - the 'normal' DOM
 
-Polymer will automatically clone the template's contents 
+Polymer will automatically clone  template's contents 
 into the element's local DOM.
 
 Currently Polymer uses shady DOM by default on all browsers.
@@ -163,6 +155,16 @@ Polymer({
     this.textContent = 'Hello World, I am a Custom Element!';
   }
 });
+```
+
+### readOnly properties
+* Can't be set using regular assignment
+```js
+  this.readonlyprop = 'test' // does not work
+```
+* Can be set using the generated private setter
+```js 
+  this._setReadonlyprop = 'test'  // does work
 ```
 
 ---
@@ -289,7 +291,8 @@ Nodes specified in template with an id is stored on the this.$ hash by id.
 </script>
 ```
 
-Statically created instance nodes only!
+* Statically created instance nodes only!
+* Even nested elements can be queried
 
 ---
 ### Automatic Node Finding
@@ -376,7 +379,7 @@ The listener callbacks are invoked with this set to the element instance.
 <x-custom></x-custom>
 ```
 ---
-### Event retargeting
+### Event retargetting
 
 * change an event's target as it bubbles up
 * that target is always in the same scope as the receiving element 
@@ -400,13 +403,13 @@ Normalized event has the following properties
 ### Example event retargetting
 the element 
 ```
-<dom-module id="event-retargeting">
+<dom-module id="event-retargetting">
   <template>
     <button id="myButton">Click Me</button>
   </template>
   <script>
     Polymer({
-        is: 'event-retargeting',
+        is: 'event-retargetting',
         listeners: {
           'click': 'handleClick',
         },
@@ -421,9 +424,9 @@ the element
 ---
 ### Example event retargetting
 ```
-<event-retargeting></event-retargeting>
+<event-retargetting></event-retargetting>
 <script>
-  var el = document.querySelector('event-retargeting');
+  var el = document.querySelector('event-retargetting');
   el.addEventListener('click', function(){
     var normalizedEvent = Polymer.dom(event);
     // logs #myButton
@@ -446,7 +449,7 @@ Demo 2. Building an API
 <!-- .slide: data-background="url('images/lab2.jpg')" --> 
 <!-- .slide: class="lab" -->
 ## Lab time!
-Testing Setups
+Building an API
 
 
 ---
@@ -523,6 +526,14 @@ var effectiveChildren = Polymer.dom(element).getEffectiveChildNodes();
 ```
 The code above does work
 
+
+---
+<!-- .slide: data-background="url('images/demo.jpg')" --> 
+<!-- .slide: class="lab" -->
+## Demo time!
+Demo 2. Building an API
+
+
 ---
 ### Bind the elements together
 Elements have properties, methods and fire events
@@ -546,25 +557,6 @@ Below is an example of an event
 
 The eventhandlers are functions you have to provide, just like regular DOM
 
----
-### Using inline modules
-Polymer provides <code>dom-module</code> to provide for document level 
-elements. 
-It is usefull to wrap the elements in a dom-module for
-* databinding support
-* theming support
-* scoping
-
----
-### Using inline modules
-To declare an inline dom-module, you write
-```
-<dom-module id='my-app' [is='dom-bind|dom-if|dom-repeat']>
-<style>... your styles here ...</style>
-<template>... your markup here ...</template>
-<script>... your script here ...</script>
-</dom-module>
-```
 
 
 

@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <link rel="import" href="./bower_components/polymer/polymer.html" />
+        <link rel="import" href="./list.html"/>
+        <link rel="import" href="./detail.html"/>
+    </head>
+    <body>
+        <dom-module id="my-app">
+            <template>
+            <todo-list id="todoList" todos="[[todos]]" on-selected-item="select"> todolist is not imported!
+            </todo-list>
+            <array-selector id="selector" selected="{{selected}}" items="{{todos}}"></array-selector>
+            <todo-detail title="{{selected.title}}" description="{{selected.description}}" done="{{selected.done}}">
+            </todo-detail>
+            selected: [[selected.title]]
+            </template>
+            <script>
+                Polymer({
+                    is:'my-app',
+                    properties:{
+                        todos:{
+                            type:Array, 
+                            value:[
+                                {title:"aardbeien eten", description:"b", done:true},
+                                {title:"credits scoren", description:"d", done:false},
+                                {title:"ertwensoep maken", description:"f", done:false},
+                            ]
+                        }
+                    },
+                    select: function(e){
+                          this.$.selector.select(e.detail.item);
+                    }
+                })
+            </script>
+        </dom-module>
+        <my-app></my-app>
+    </body>
+</html>

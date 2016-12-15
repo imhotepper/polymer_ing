@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- include polymer from the cdn -->
+  <link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/polymer/polymer.html"/>
+</head>
+<body>
+  <dom-module id="test-module">
+   <template>
+        <h1>Local dom header followed by distributed dom.</h1>
+        <content select=".content"></content>
+        <h3>Footer after distributed dom.</h3>
+    </template>
+    <script>
+      Polymer({
+        is:'test-module'
+      });
+    </script>
+  </dom-module>
+ <test-module>
+     <div class="content">custom content 2</div>
+ </test-module>
+
+</body>
+</html>

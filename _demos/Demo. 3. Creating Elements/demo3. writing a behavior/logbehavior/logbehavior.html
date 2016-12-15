@@ -16,8 +16,12 @@
         listeners:{
             click:'_logLine'
         },
+
+        registered: function(){
+            console.log(`registered the behavior`);
+        },
         _logLine:function(){
-            console.log("someone clicked on the button....");
+            console.log(this.category + ": someone clicked on the button....");
         }
     };
 })();

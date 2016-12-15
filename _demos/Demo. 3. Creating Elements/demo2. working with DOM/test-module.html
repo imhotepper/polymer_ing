@@ -1,0 +1,35 @@
+  <link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.5.0/lib/polymer/polymer.html"/>
+ 
+ 
+ <dom-module id="test-module">
+   <template>
+       <button on-tap="addDiv">Add a div</button>
+        <button on-tap="logDivs">Log number of children..</button>
+       <content select=".content"></content>
+    </template>
+    <script>
+      Polymer({
+        is:'test-module',
+        addDiv: function(){
+          var toLocal = document.createElement('span');
+          var toLight = document.createElement('span');
+          toLocal.innerText = "I am a local span";
+          toLight.innerText = "I am a light span";
+          Polymer.dom(this.root).appendChild(toLocal);
+        // Polymer.dom(this).appendChild(toLight);
+          Polymer.dom(this.querySelector(".content")).appendChild(toLight);
+          
+        },
+        logDivs:function(){
+          console.log('number of divs in light DOM: ' + Polymer.dom(this).children.length);
+          console.log('number of elements in light DOM: ' + Polymer.dom(this).getEffectiveChildNodes().length);
+          console.log('number of divs in LOCAL DOM: ' + Polymer.dom(this.root).children.length);
+          console.log('number of elements in LOCAL DOM: ' + Polymer.dom(this.root).getEffectiveChildNodes().length);
+
+          console.log("dumping local DOM", Polymer.dom(this.root).children);
+          console.log("dumping light DOM", Polymer.dom(this).children);
+        }
+
+      });
+    </script>
+  </dom-module>
