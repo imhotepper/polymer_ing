@@ -21,7 +21,7 @@
                     <ul><li>[[item]]</li></ul>
                     </template>
                 </iron-list>
-             <!--   <iron-localstorage name="testing" value="{{todos}}"  on-iron-localstorage-load-empty="initializeDefault"></iron-localstorage> -->
+                <iron-localstorage name="testing" value="{{todos}}"  on-iron-localstorage-load-empty="initializeDefault"></iron-localstorage> 
                 <input type="text" value="{{todo::change}}"></input>
                 <button on-tap="saveTodo">Save</button>
                 </div>
@@ -31,14 +31,14 @@
                     is:'my-app',
                     properties:{
                         todos:{
-                            type:Array, value:[]
+                            type:Array //, value:[]
                         }
                     },
-                    /* // initializes default if nothing has been stored, IMPORTANT!
+                     // initializes default if nothing has been stored, IMPORTANT!
                     initializeDefault: function() {
                         this.todos = [];
     	            },
-                    */
+                    
                     areTodos: function(){
                         return this.todos.length == 0;
                     },
